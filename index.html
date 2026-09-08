@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>詹喬安 Joanne Chan | 個人作品集</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts: 搭配溫潤人文感字體 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- 導覽列 -->
+  <nav class="navbar">
+    <div class="logo">JOANNE CHAN.</div>
+    <ul class="nav-links">
+      <li><a href="#about">關於我</a></li>
+      <li><a href="#portfolio">作品專區</a></li>
+      <li><a href="#contact">聯絡方式</a></li>
+    </ul>
+  </nav>
+
+  <!-- 首頁主視覺 (Hero) -->
+  <header class="hero">
+    <div class="hero-content">
+      <span class="tagline">文化創意 ✕ 品牌設計 ✕ 敘事轉化</span>
+      <h1>詹喬安 Joanne Chan</h1>
+      <p>探索文化底蘊，將生活感知轉譯為有溫度的創意符號與專案實踐。</p>
+      <a href="#portfolio" class="btn">瀏覽作品</a>
+    </div>
+  </header>
+
+  <!-- 關於我 -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">關於我 / About</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>你好，我是<strong>詹喬安</strong>。主修文化創意產業，熱愛挖掘地方風土、生活觀察與品牌敘事。</p>
+          <p>在大學四年的探索中，我結合文化企劃、視覺轉譯、影音記錄與數位思維，嘗試讓文化透過設計走進大眾日常。這裡記錄了我的畢業專題、品牌 IP 規劃及課堂精選專案。</p>
+          <div class="skills">
+            <span>文化轉譯與策劃</span>
+            <span>品牌與視覺設計</span>
+            <span>專案企劃與執行</span>
+            <span>影像與社群內容</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 作品展示區 -->
+  <section id="portfolio" class="section bg-light">
+    <div class="container">
+      <h2 class="section-title">精選作品 / Portfolio</h2>
+      
+      <!-- 分類標籤 -->
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">全部</button>
+        <button class="filter-btn" data-filter="graduation">畢業專題</button>
+        <button class="filter-btn" data-filter="ip-design">品牌與 IP</button>
+        <button class="filter-btn" data-filter="coursework">精選作業</button>
+        <button class="filter-btn" data-filter="media">影像／企劃</button>
+      </div>
+
+      <!-- 作品網格 -->
+      <div class="portfolio-grid">
+        
+        <!-- 作品 1 (畢業專題範例) -->
+        <article class="portfolio-card" data-category="graduation" 
+                 data-title="地方文化再生畢業專題" 
+                 data-desc="以在地風土與文化故事為核心，透過視覺識別重塑、實體文創商品及數位體驗，打造兼具溫度與永續性的地方創生品牌提案。"
+                 data-img="https://picsum.photos/800/600?random=1">
+          <div class="card-img-wrap">
+            <img src="https://picsum.photos/600/400?random=1" alt="畢業專題">
+          </div>
+          <div class="card-info">
+            <span class="category-tag">畢業專題</span>
+            <h3>地方文化再生專案</h3>
+            <p>文化調研 ✕ 品牌重塑 ✕ 整合設計</p>
+          </div>
+        </article>
+
+        <!-- 作品 2 (IP 設計範例) -->
+        <article class="portfolio-card" data-category="ip-design" 
+                 data-title="原創角色 IP 開發：風土萌物集" 
+                 data-desc="提取生活與風土意象進行角色化創作，包含三面圖設定、個性世界觀架構，以及周邊文創商品（文具、吊飾、包裝）設計延伸。"
+                 data-img="https://picsum.photos/800/600?random=2">
+          <div class="card-img-wrap">
+            <img src="https://picsum.photos/600/400?random=2" alt="IP設計">
+          </div>
+          <div class="card-info">
+            <span class="category-tag">品牌與 IP</span>
+            <h3>風土萌物集 原創 IP</h3>
+            <p>角色設定 ✕ 周邊延伸 ✕ 故事敘述</p>
+          </div>
+        </article>
+
+        <!-- 作品 3 (課堂作業範例) -->
+        <article class="portfolio-card" data-category="coursework" 
+                 data-title="文創包裝與識別系統實務" 
+                 data-desc="針對傳統農特產進行包裝改良設計，兼顧環保結構思維與現代極簡美感，提升產品文化附加價值。"
+                 data-img="https://picsum.photos/800/600?random=3">
+          <div class="card-img-wrap">
+            <img src="https://picsum.photos/600/400?random=3" alt="包裝設計">
+          </div>
+          <div class="card-info">
+            <span class="category-tag">精選作業</span>
+            <h3>質樸共生：包裝設計實務</h3>
+            <p>結構研發 ✕ 視覺識別 ✕ 排版設計</p>
+          </div>
+        </article>
+
+        <!-- 作品 4 (影像企劃範例) -->
+        <article class="portfolio-card" data-category="media" 
+                 data-title="文化散步紀錄短片企劃" 
+                 data-desc="親自走訪老街巷弄與匠人訪談，負責腳本企劃、分鏡規劃、拍攝與後製剪輯，以生活感視角傳遞傳統工藝之美。"
+                 data-img="https://picsum.photos/800/600?random=4">
+          <div class="card-img-wrap">
+            <img src="https://picsum.photos/600/400?random=4" alt="影像企劃">
+          </div>
+          <div class="card-info">
+            <span class="category-tag">影像／企劃</span>
+            <h3>街區散步：匠人記憶特輯</h3>
+            <p>田野訪談 ✕ 影片剪輯 ✕ 社群推廣</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 聯絡方式 -->
+  <section id="contact" class="section">
+    <div class="container text-center">
+      <h2 class="section-title">聯絡我 / Contact</h2>
+      <p class="contact-desc">歡迎跨界合作、專案交流或設計討論：</p>
+      <div class="contact-links">
+        <a href="mailto:your_email@example.com" class="btn">發送 Email</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 頁尾 -->
+  <footer>
+    <p>© 2026 詹喬安 Joanne Chan. All Rights Reserved.</p>
+  </footer>
+
+  <!-- 作品詳細彈窗 (Modal) -->
+  <div id="projectModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <img id="modalImg" src="" alt="專案圖片">
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
