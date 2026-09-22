@@ -1,0 +1,55 @@
+/* 全域基本排版 */
+body {
+  font-family: Arial, "Microsoft JhengHei", sans-serif;
+  margin: 0;
+  padding: 40px 20px;
+  background-color: #f5f6f8;
+  text-align: center;
+}
+
+h1 {
+  color: #222;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+/* 5 張圖片展示區容器 */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 點擊卡片外框設定 */
+.card {
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+  text-decoration: none;
+  transition: box-shadow 0.3s ease;
+}
+
+/* 圖片固定比例與基礎設定 */
+.card img {
+  display: block;
+  width: 280px;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+/* 滑鼠移過（Hover）動態效果：微放大並微浮起 */
+.card:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+}
+
+.card:hover img {
+  transform: scale(1.08) translateY(-4px);
+  filter: brightness(1.05);
+}
