@@ -1,0 +1,544 @@
+/* ====================================================
+   雜誌風格設計系統 (Editorial & Lifestyle Aesthetics)
+   純 CSS 升級版：無須修改 index.html 結構
+   ==================================================== */
+
+/* 引入優質襯線字體與無襯線搭配，打造生活風格雜誌感 */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Noto+Serif+TC:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* 高級雜誌色彩系統 */
+  --font-serif: "Noto Serif TC", "Songti TC", "Cinzel", "Times New Roman", serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  
+  --c-dark: #1f1e1c;           /* 石墨黑（比純黑更溫潤典雅） */
+  --c-accent: #b8623f;         /* 焦糖陶赭色（醒目而沈穩） */
+  --c-accent-hover: #984e31;
+  --c-sand: #f4efe9;           /* 典藏燕麥砂岩白 */
+  --c-card-bg: #ffffff;
+  --c-muted: #6e6b66;          /* 雜誌灰字 */
+  --c-light: #9e9a93;
+  --c-border: #e3ded6;         /* 高級細線邊框 */
+  
+  --shadow-editorial: 0 10px 30px -10px rgba(31, 30, 28, 0.08);
+  --shadow-hover: 0 20px 40px -15px rgba(31, 30, 28, 0.16);
+  --transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--c-sand);
+  color: var(--c-dark);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  width: 92%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* ====================================================
+   1. 頂部導覽列 (Minimalist Editorial Nav)
+   ==================================================== */
+.navbar {
+  background-color: rgba(244, 239, 233, 0.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--c-border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem 0;
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+}
+
+.logo {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--c-dark);
+  text-transform: uppercase;
+}
+
+.tagline {
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  color: var(--c-muted);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2.2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--c-dark);
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  position: relative;
+  padding-bottom: 4px;
+  transition: var(--transition);
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 1.5px;
+  background-color: var(--c-accent);
+  transition: var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--c-accent);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ====================================================
+   2. 主視覺 Hero (Magazine Cover Style)
+   ==================================================== */
+.hero {
+  position: relative;
+  background: radial-gradient(circle at 50% 30%, #ffffff 0%, #ece5dc 100%);
+  padding: 6.5rem 1.5rem 5.5rem 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--c-border);
+  overflow: hidden;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--c-accent);
+  border: 1px solid var(--c-accent);
+  background-color: transparent;
+  padding: 0.35rem 1.2rem;
+  border-radius: 50px;
+  margin-bottom: 1.6rem;
+}
+
+.hero h2 {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--c-dark);
+  letter-spacing: 2px;
+  margin-bottom: 1.2rem;
+}
+
+.hero p {
+  font-size: 1.05rem;
+  color: var(--c-muted);
+  max-width: 580px;
+  margin: 0 auto 2.4rem auto;
+  line-height: 1.8;
+  letter-spacing: 0.5px;
+}
+
+.btn {
+  display: inline-block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.95rem 2.4rem;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background-color: var(--c-dark);
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(31, 30, 28, 0.2);
+}
+
+.btn-primary:hover {
+  background-color: var(--c-accent);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(184, 98, 63, 0.3);
+}
+
+/* ====================================================
+   3. 區塊通用標題 (Editorial Headings)
+   ==================================================== */
+.section {
+  padding: 5.5rem 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+  position: relative;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--c-dark);
+  margin-bottom: 0.6rem;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  background-color: var(--c-accent);
+  margin: 0.9rem auto 0 auto;
+}
+
+.section-subtitle {
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  color: var(--c-muted);
+}
+
+/* ====================================================
+   4. 醒目雜誌式商品卡片 (Editorial Product Cards)
+   ==================================================== */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 2.5rem;
+}
+
+.product-card {
+  background-color: var(--c-card-bg);
+  border: 1px solid var(--c-border);
+  border-radius: 4px; /* 俐落直角帶來當代雜誌簡約感 */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-editorial);
+  transition: var(--transition);
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: #d1c8bd;
+}
+
+/* 圖片視差與縮放質感 */
+.card-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  background-color: #f0ebe4;
+  overflow: hidden;
+}
+
+.card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.product-card:hover .card-img-wrapper img {
+  transform: scale(1.05); /* 雜誌級微妙懸浮放大 */
+}
+
+/* 精緻標籤 (Badge) */
+.product-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background-color: var(--c-dark);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  padding: 0.35rem 0.75rem;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+.card-body {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.6rem;
+  color: var(--c-dark);
+}
+
+/* 醒目的高訂價格呈現 */
+.price-box {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  margin-bottom: 1.1rem;
+  color: var(--c-accent);
+}
+
+.currency {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.price {
+  font-family: var(--font-serif);
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* 規格清單：雜誌圖鑑版面 */
+.spec-list {
+  list-style: none;
+  font-size: 0.82rem;
+  color: var(--c-muted);
+  background-color: #faf7f2;
+  border-left: 2px solid var(--c-accent);
+  padding: 0.75rem 1rem;
+  border-radius: 2px;
+  margin-bottom: 1.1rem;
+  line-height: 1.65;
+}
+
+.spec-list li {
+  margin-bottom: 0.25rem;
+}
+
+.spec-list li:last-child {
+  margin-bottom: 0;
+}
+
+.product-desc {
+  font-size: 0.9rem;
+  color: var(--c-muted);
+  line-height: 1.7;
+  margin-bottom: 1.6rem;
+  flex-grow: 1;
+}
+
+/* 雜誌風格呼叫行動連結 (CTA) */
+.link-shipping {
+  font-size: 0.82rem;
+  color: var(--c-dark);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+  align-self: flex-start;
+  border-bottom: 1px solid var(--c-dark);
+  padding-bottom: 2px;
+  transition: var(--transition);
+}
+
+.link-shipping:hover {
+  color: var(--c-accent);
+  border-color: var(--c-accent);
+  padding-left: 3px;
+}
+
+/* ====================================================
+   5. 配送說明區塊 (Editorial Service Blocks)
+   ==================================================== */
+.shipping-section {
+  background-color: #ebe4dc;
+  border-top: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border);
+}
+
+.shipping-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.shipping-box {
+  background-color: var(--c-card-bg);
+  padding: 2.2rem;
+  border-radius: 4px;
+  border: 1px solid var(--c-border);
+  box-shadow: var(--shadow-editorial);
+  transition: var(--transition);
+}
+
+.shipping-box:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.shipping-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.shipping-box h4 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.6rem;
+  color: var(--c-dark);
+}
+
+.shipping-box p {
+  font-size: 0.9rem;
+  color: var(--c-muted);
+  line-height: 1.75;
+}
+
+/* ====================================================
+   6. 常見問題 FAQ (Editorial Accordion/List)
+   ==================================================== */
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.faq-item {
+  background-color: var(--c-card-bg);
+  padding: 1.8rem 2.2rem;
+  border-radius: 4px;
+  border: 1px solid var(--c-border);
+  box-shadow: var(--shadow-editorial);
+}
+
+.faq-item h4 {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.6rem;
+  color: var(--c-dark);
+}
+
+.faq-item p {
+  font-size: 0.92rem;
+  color: var(--c-muted);
+  line-height: 1.75;
+}
+
+/* ====================================================
+   7. 頁尾 Footer (Minimalist Black Edition)
+   ==================================================== */
+.footer {
+  background-color: #171615;
+  color: #94908a;
+  padding: 3.5rem 1.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.alert-box {
+  max-width: 680px;
+  margin: 0 auto 1.5rem auto;
+  padding: 1rem 1.4rem;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(184, 98, 63, 0.35);
+  border-radius: 2px;
+}
+
+.disclaimer {
+  color: #e09476;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  line-height: 1.6;
+}
+
+.copyright {
+  color: #6a6762;
+  font-size: 0.78rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* ====================================================
+   8. 響應式優化 (Mobile Responsive)
+   ==================================================== */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 0.9rem;
+    padding: 1rem 0;
+  }
+  
+  .brand {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+  }
+  
+  .nav-links {
+    gap: 1.5rem;
+  }
+  
+  .hero {
+    padding: 4.5rem 1rem;
+  }
+  
+  .hero h2 {
+    font-size: 1.75rem;
+  }
+  
+  .hero p {
+    font-size: 0.95rem;
+  }
+  
+  .section {
+    padding: 3.5rem 0;
+  }
+  
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .card-img-wrapper {
+    height: 240px;
+  }
+}
