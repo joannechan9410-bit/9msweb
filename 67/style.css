@@ -1,0 +1,475 @@
+/* ========================================================
+   客家好好玩 - Chunky Toy Pop（童趣馬卡龍玩具風格）
+   ======================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-sand: #FBF8F1;
+  --text-main: #2C3A47;
+  --text-muted: #576574;
+  --border-dark: #1E272E;
+  
+  /* 馬卡龍玩具活力色 */
+  --c-yellow: #FECA57;
+  --c-pink: #FF6B6B;
+  --c-cyan: #48DBFB;
+  --c-mint: #1DD1A1;
+  --c-purple: #9B59B6;
+  --c-orange: #FF9F43;
+  --c-blue: #54A0FF;
+
+  /* 3D 玩具感厚陰影 */
+  --shadow-chunky: 0px 8px 0px var(--border-dark);
+  --shadow-btn: 0px 5px 0px var(--border-dark);
+  --shadow-btn-hover: 0px 2px 0px var(--border-dark);
+}
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background-color: var(--bg-sand);
+  background-image: 
+    radial-gradient(#E8DFCD 1.5px, transparent 1.5px),
+    radial-gradient(#E8DFCD 1.5px, var(--bg-sand) 1.5px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* 頂部導覽列 */
+.top-nav {
+  position: sticky;
+  top: 0;
+  background: #FFF;
+  border-bottom: 4px solid var(--border-dark);
+  z-index: 1000;
+  padding: 0.8rem 1.5rem;
+}
+
+.nav-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.bubble-icon {
+  font-size: 2rem;
+  background: var(--c-yellow);
+  padding: 4px 10px;
+  border-radius: 18px;
+  border: 3px solid var(--border-dark);
+  box-shadow: 2px 3px 0px var(--border-dark);
+}
+
+.brand-title {
+  font-family: 'Mochiy Pop One', 'Noto Sans TC', cursive;
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: var(--text-main);
+}
+
+.brand-title span {
+  font-family: 'Fredoka', cursive;
+  font-size: 0.75rem;
+  background: var(--c-pink);
+  color: #FFF;
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 2px solid var(--border-dark);
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-item {
+  text-decoration: none;
+  font-weight: 900;
+  color: var(--text-main);
+  background: #F1F2F6;
+  padding: 0.5rem 1.2rem;
+  border-radius: 16px;
+  border: 3px solid var(--border-dark);
+  box-shadow: 2px 3px 0px var(--border-dark);
+  transition: all 0.15s ease;
+}
+
+.nav-item:hover {
+  background: var(--c-yellow);
+  transform: translateY(-2px);
+}
+
+.cart-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--c-pink);
+  color: #FFF;
+  padding: 0.5rem 1.2rem;
+  border-radius: 24px;
+  border: 3px solid var(--border-dark);
+  box-shadow: 3px 4px 0px var(--border-dark);
+  cursor: pointer;
+  font-weight: 900;
+  user-select: none;
+  transition: transform 0.1s;
+}
+
+.cart-pill:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 2px 0px var(--border-dark);
+}
+
+.cart-badge {
+  background: #FFF;
+  color: var(--c-pink);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid var(--border-dark);
+  font-size: 0.9rem;
+}
+
+/* Banner 區域 */
+.hero-block {
+  max-width: 1200px;
+  margin: 2.5rem auto 1.5rem;
+  padding: 0 1.5rem;
+}
+
+.hero-card {
+  background: #FFF;
+  border: 4px solid var(--border-dark);
+  border-radius: 36px;
+  box-shadow: var(--shadow-chunky);
+  padding: 3.5rem 2rem;
+  text-align: center;
+  background-image: linear-gradient(135deg, #FFF9EB 0%, #FFFFFF 60%, #E8F7FF 100%);
+}
+
+.pill-tag {
+  display: inline-block;
+  background: var(--c-yellow);
+  color: var(--border-dark);
+  font-weight: 900;
+  padding: 0.4rem 1.2rem;
+  border-radius: 30px;
+  border: 3px solid var(--border-dark);
+  box-shadow: 2px 3px 0px var(--border-dark);
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+}
+
+.hero-card h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--text-main);
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+.hero-card h1 span {
+  background: linear-gradient(180deg, transparent 65%, var(--c-pink) 65%);
+  padding: 0 4px;
+}
+
+.hero-card p {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  max-width: 650px;
+  margin: 0 auto 2rem;
+}
+
+.toy-btn {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 900;
+  padding: 1rem 2.5rem;
+  border-radius: 30px;
+  border: 4px solid var(--border-dark);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.toy-btn-primary {
+  background: var(--c-pink);
+  color: #FFF;
+  box-shadow: var(--shadow-btn);
+}
+
+.toy-btn-primary:hover {
+  transform: translateY(3px);
+  box-shadow: var(--shadow-btn-hover);
+}
+
+/* 六藝生活橫條 */
+.skills-strip {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.strip-header h2 {
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+
+.strip-header p {
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+}
+
+.strip-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.skill-chip {
+  padding: 0.6rem 1.4rem;
+  border-radius: 20px;
+  border: 3px solid var(--border-dark);
+  box-shadow: 2px 3px 0px var(--border-dark);
+  font-weight: 900;
+  font-size: 0.95rem;
+}
+
+.c-food   { background: #FFEAA7; }
+.c-cloth  { background: #81ECEC; }
+.c-house  { background: #FAB1A0; }
+.c-travel { background: #55EFC4; }
+.c-edu    { background: #D6A2E8; }
+.c-play   { background: #74B9FF; }
+
+/* 商品商城網格 */
+.store-layout {
+  max-width: 1200px;
+  margin: 3rem auto 6rem;
+  padding: 0 1.5rem;
+}
+
+.store-headline {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.headline-pill {
+  display: inline-block;
+  font-family: 'Fredoka', cursive;
+  background: var(--border-dark);
+  color: #FFF;
+  padding: 0.2rem 1rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.store-headline h2 {
+  font-size: 2.2rem;
+  font-weight: 900;
+}
+
+.store-headline p {
+  color: var(--text-muted);
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+/* 卡片本體 */
+.toy-card {
+  background: #FFF;
+  border: 4px solid var(--border-dark);
+  border-radius: 28px;
+  box-shadow: var(--shadow-chunky);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.toy-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0px 14px 0px var(--border-dark);
+}
+
+.toy-card-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #FFF;
+  color: var(--border-dark);
+  font-size: 0.75rem;
+  font-weight: 900;
+  padding: 3px 10px;
+  border-radius: 12px;
+  border: 2px solid var(--border-dark);
+  box-shadow: 2px 2px 0px var(--border-dark);
+  z-index: 10;
+}
+
+/* 正方形 300x300 圖片框架 */
+.toy-img-box {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #F1F2F6;
+  border-bottom: 4px solid var(--border-dark);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toy-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toy-card:hover .toy-img-box img {
+  transform: scale(1.08);
+}
+
+/* 卡片資訊 */
+.toy-info {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.serial {
+  font-size: 0.75rem;
+  font-weight: 900;
+  color: #8395A7;
+  margin-bottom: 0.2rem;
+}
+
+.toy-info h3 {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.toy-info p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+  flex-grow: 1;
+}
+
+.toy-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 3px dashed #DFE4EA;
+  padding-top: 0.8rem;
+}
+
+.price-val {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--c-pink);
+}
+
+.buy-action-btn {
+  background: var(--c-yellow);
+  color: var(--border-dark);
+  font-weight: 900;
+  font-size: 0.9rem;
+  padding: 0.6rem 1rem;
+  border-radius: 18px;
+  border: 3px solid var(--border-dark);
+  box-shadow: 2px 3px 0px var(--border-dark);
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.buy-action-btn:hover {
+  background: var(--c-orange);
+  color: #FFF;
+}
+
+.buy-action-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 1px 0px var(--border-dark);
+}
+
+/* 各主題色卡片細微變化 */
+.theme-sky .toy-card-tag { background: var(--c-cyan); color: #FFF; }
+.theme-amber .toy-card-tag { background: var(--c-yellow); }
+.theme-mint .toy-card-tag { background: var(--c-mint); color: #FFF; }
+.theme-coral .toy-card-tag { background: var(--c-pink); color: #FFF; }
+.theme-orange .toy-card-tag { background: var(--c-orange); color: #FFF; }
+.theme-violet .toy-card-tag { background: var(--c-purple); color: #FFF; }
+.theme-rose .toy-card-tag { background: #FF9FF3; }
+.theme-teal .toy-card-tag { background: #00D2D3; color: #FFF; }
+.theme-green .toy-card-tag { background: #10AC84; color: #FFF; }
+.theme-darkblue .toy-card-tag { background: var(--c-blue); color: #FFF; }
+
+/* 頁尾 */
+.bottom-bar {
+  background: #FFF;
+  border-top: 4px solid var(--border-dark);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}
+
+.footer-logo {
+  font-family: 'Mochiy Pop One', cursive;
+  font-size: 1.2rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+}
+
+.bottom-bar p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.bottom-bar small {
+  color: #8395A7;
+  font-size: 0.8rem;
+}
+
+/* 響應式優化 */
+@media (max-width: 768px) {
+  .hero-card h1 {
+    font-size: 2rem;
+  }
+  .nav-menu {
+    display: none;
+  }
+}
