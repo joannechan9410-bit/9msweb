@@ -1,1 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>客家好好玩 Hakka Fun！｜兒童客語機器人樂園</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;800&family=Mochiy+Pop+One&family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
 
+  <!-- 頂部浮動導覽列 -->
+  <header class="top-nav">
+    <div class="nav-wrapper">
+      <div class="brand-logo">
+        <span class="bubble-icon">🏮</span>
+        <div class="brand-title">客家好好玩 <span>HAKKA FUN</span></div>
+      </div>
+      <nav class="nav-menu">
+        <a href="#store-section" class="nav-item">選機器人 🤖</a>
+        <a href="#six-skills" class="nav-item">食衣住行育樂 🎒</a>
+      </nav>
+      <div class="cart-pill" onclick="viewCart()">
+        <span class="cart-emoji">🎒</span>
+        <span class="cart-label">寶貝袋</span>
+        <span class="cart-badge" id="cartCount">0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 活力玩具風 Banner -->
+  <section class="hero-block">
+    <div class="hero-card">
+      <div class="pill-tag">✨ 專為小朋友設計的母語 AI 夥伴登場 ✨</div>
+      <h1>開箱你的<span>客語機器人</span>！<br>跟著小夥伴天天講客話</h1>
+      <p>結合客家傳統文化智慧與生動對話，讓語言學習就像在玩玩具一樣開心又自然！</p>
+      <div class="hero-action">
+        <a href="#store-section" class="toy-btn toy-btn-primary">立刻挑選我的專屬夥伴 🚀</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 六大生活領域特色導覽條 -->
+  <section id="six-skills" class="skills-strip">
+    <div class="strip-header">
+      <h2>生活就是最好的客語教室</h2>
+      <p>食・衣・住・行・育・樂，全方位融入孩子的生活日常</p>
+    </div>
+    <div class="strip-pills">
+      <span class="skill-chip c-food">🍲 食・擂茶粄食</span>
+      <span class="skill-chip c-cloth">👘 衣・藍染大襟</span>
+      <span class="skill-chip c-house">🏡 住・夥房起居</span>
+      <span class="skill-chip c-travel">🚲 行・桐花行路</span>
+      <span class="skill-chip c-edu">📚 育・勤耕晴讀</span>
+      <span class="skill-chip c-play">🎶 樂・山歌天穿</span>
+    </div>
+  </section>
+
+  <!-- 10 款商品卡片商城區 -->
+  <main id="store-section" class="store-layout">
+    <div class="store-headline">
+      <div class="headline-pill">SHOPPING TIME</div>
+      <h2>熱銷 10 款客語智慧夥伴</h2>
+      <p>點擊「打包帶走」按鈕，把可愛又聰明的客語機器人帶回家！</p>
+    </div>
+
+    <div class="cards-grid">
+
+      <!-- 01 阿啾箭 -->
+      <article class="toy-card theme-sky">
+        <div class="toy-card-tag">四縣生活啟蒙</div>
+        <div class="toy-img-box">
+          <img src="images/01.jpg" alt="HK-BOT-001 阿啾箭" loading="lazy">
+        </div>
+        <div class="toy-info">
+          <span class="serial">編號：HK-BOT-001</span>
+          <h3>阿啾箭・日常啟蒙機</h3>
+          <p>內建四縣腔基礎詞彙與日常問候兒歌，透過「即時回音練說」引導幼兒輕鬆開口講客話！</p>
+          <div class="toy-price-row">
+            <span class="price-val">NT$ 1,980</span>
+            <button class="buy-action-btn" onclick="addItem('阿啾箭啟蒙機')">打包帶走 🎁</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 海陸星 -->
+      <article class="toy-card theme-amber">
+        <div class="toy-card-tag">海陸客庄專用</div>
+        <div class="toy-img-box">
+          <img src="images/02.jpg" alt="HK-BOT-002 海陸星" loading="lazy">
+        </div>
+        <div class="toy-info">
+          <span class="serial">編號：HK-BOT-002</span>
+          <h3>海陸星・客語聽說助手</h3>
+          <p>專門為新竹、苗栗海陸調家庭打造！聲控天氣播報與客庄家庭對話，精準海陸語音識別。</p>
+          <div class="toy-price-row">
+            <span class="price-val">NT$ 2,150</span>
+            <button class="buy-action-btn" onclick="addItem('海陸星聽說助手')">打包帶走 🎁</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 03 老夥房 -->
+      <article class="toy-card theme-mint">
+        <div class="toy-card-tag">民間故事入眠</div>
+        <div class="toy-img-box">
+          <img src="images/03.jpg" alt="HK-BOT-003 老夥房" loading="lazy">
+        </div>
+        <div class="toy-info">
+          <span class="serial">編號：HK-BOT-003</span>
+          <h3>老夥房・故事陪伴機</h3>
+          <p>紅磚老屋造型夜燈！收錄上百則伯公、義民傳說與童話，可切換大埔、饒平多腔調。</p>
+          <div class="toy-price-row">
+            <span class="price-val">NT$ 2,380</span>
+            <button class="buy-action-btn" onclick="addItem('老夥房故事機')">打包帶走 🎁</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 04 山歌王 -->
+      <article class="toy-card theme-coral">
+        <div class="toy-card-tag">音律與演唱</div>
+        <div class="toy-img-box">
+          <img src="images/04.jpg" alt="HK-BOT-004 山歌王" loading="lazy">
+        </div>
+        <div class="toy-info">
+          <span class="serial">編號：HK-BOT-004</span>
+          <h3>山歌王・傳統歌謠音律機</h3>
+          <p>九腔十八調音高頻率分析！跟唱伴奏與即時音準評分，視覺化呈現老山歌的轉音技巧。</p>
+          <div class="toy-price-row">
+            <span class="price-val">NT$ 2,680</span>
+            <button class="buy-action-btn" onclick="addItem('山歌王音律機')">打包帶走 🎁</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 05 擂茶寶 -->
+      <article class="toy-card theme-orange">
+        <div class="toy-card-tag">飲食料理助手</div>
+        <div class="toy-img-box">
+          <img src="images/05.jpg" alt="HK-BOT-005 擂茶寶" loading="lazy">
+        </div>
+        <div class="toy-info">
+          <span class="serial">編號：HK-BOT-005</span>
+          <h3>擂茶寶・客家飲食廚房助手</h3>
+          <p>陶缽擂棒可愛外型！語音指導封肉、粄條、客家小炒烹飪步驟，雙語計時與文化由來解說。</p>
+          <div class="toy-price-row">
+            <span class="price-val">NT$ 2,480</span>
+            <button class="buy-action-btn" onclick="addItem('擂茶寶廚房助手')">打包帶走 🎁</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 06 登科筆 -->
+      <article class="toy-card theme-violet">
+        <div class="toy-card-tag">認證考試必備</div>
+        <div class="toy-img-box">
+          <img src="images/06.jpg" alt="HK-BOT-006 登科筆" loading="lazy">
+        </div>
+        <div class="toy-info">
+          <span class="serial">編號：HK-BOT-006</span>
+          <h3>登科筆・客語認證衝刺機</h3>
+          <p>敬字亭文風進士帽！內建歷年能力認證題庫，拼音比對糾錯演算法，生成個人弱點字詞特訓。</p>
+          <div class="toy-price-row">
+            <span class="price-val">NT$ 2,580</span>
+            <button class="buy-action-btn" onclick="addItem('登科筆認證機')">打包帶走 🎁</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 07 桐花客 -->
+      <article class="toy-card theme-rose">
+        <div class="toy-card-tag">文旅智慧導航</div>
+        <div class="toy-img-box">
+          <img src="images/07.jpg" alt="HK-BOT-007 桐花客" loading="lazy">
+        </div>
+        <div class="toy-info">
+          <span class="serial">編號：HK-BOT-007</span>
+          <h3>桐花客・文旅隨身導航機</h3>
+          <p>油桐花紋隨身便攜機！內建 GPS 老街地圖，走訪古道自動觸發景點解說，支援雙向即時翻譯。</p>
+          <div class="toy-price-row">
+            <span class="price-val">NT$ 2,290</span>
+            <button class="buy-action-btn" onclick="addItem('桐花客導航機')">打包帶走 🎁</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 08 阿公婆 -->
+      <article class="toy-card theme-teal">
+        <div class="toy-card-tag">銀髮全語音照護</div>
+        <div class="toy-img-box">
+          <img src="images/08.jpg" alt="HK-BOT-008 阿公婆" loading="lazy">
+        </div>
+        <div class="toy-info">
+          <span class="serial">編號：HK-BOT-008</span>
+          <h3>阿公婆・長輩方言照護機</h3>
+          <p>全語音免看螢幕！定時客語溫馨用藥提醒，具備跌倒異常通報與子女遠端留言連線。</p>
+          <div class="toy-price-row">
+            <span class="price-val">NT$ 2,890</span>
+            <button class="buy-action-btn" onclick="addItem('阿公婆照護機')">打包帶走 🎁</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 09 蒔田小學堂 -->
+      <article class="toy-card theme-green">
+        <div class="toy-card-tag">STEAM 程式設計</div>
+        <div class="toy-img-box">
+          <img src="images/09.jpg" alt="HK-BOT-009 蒔田小學堂" loading="lazy">
+        </div>
+        <div class="toy-info">
+          <span class="serial">編號：HK-BOT-009</span>
+          <h3>蒔田小學堂・STEAM機器人</h3>
+          <p>斗笠履帶農耕車！圖像積木 Blockly 程式控制，融合二十四節氣農作地圖任務與課堂互動。</p>
+          <div class="toy-price-row">
+            <span class="price-val">NT$ 3,280</span>
+            <button class="buy-action-btn" onclick="addItem('蒔田小學堂')">打包帶走 🎁</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 10 天穿機 -->
+      <article class="toy-card theme-darkblue">
+        <div class="toy-card-tag">全能 LLM 旗艦</div>
+        <div class="toy-img-box">
+          <img src="images/10.jpg" alt="HK-BOT-010 天穿機" loading="lazy">
+        </div>
+        <div class="toy-info">
+          <span class="serial">編號：HK-BOT-010</span>
+          <h3>天穿機・即時 LLM 旗艦版</h3>
+          <p>搭載本地客家文化大型語言模型！具備表情螢幕、臉部追蹤，能進行智慧對句與全腔調暢聊。</p>
+          <div class="toy-price-row">
+            <span class="price-val">NT$ 3,990</span>
+            <button class="buy-action-btn" onclick="addItem('天穿機旗艦版')">打包帶走 🎁</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- 溫馨頁尾 -->
+  <footer class="bottom-bar">
+    <div class="footer-wrap">
+      <div class="footer-logo">🌸 客家好好玩 Hakka Fun Store</div>
+      <p>客庄智慧家庭與兒童鄉土母語科技領導品牌 ｜ 諮詢專線：0800-888-168</p>
+      <small>© 2026 客家好好玩 數位教材電商平台. 版權所有.</small>
+    </div>
+  </footer>
+
+  <script>
+    let cartCounter = 0;
+    function addItem(prodName) {
+      cartCounter++;
+      document.getElementById('cartCount').textContent = cartCounter;
+      alert(`🎉 耶！成功把【${prodName}】放進寶貝袋囉！`);
+    }
+    function viewCart() {
+      alert(`🎒 目前寶貝袋裡共有 ${cartCounter} 件客語機器人商品！`);
+    }
+  </script>
+</body>
+</html>
