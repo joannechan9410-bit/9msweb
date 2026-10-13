@@ -3,25 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CYBER・MART 炫彩未來購物網</title>
+  <title>台灣味！寶島逢甲觀光夜市 - 食物專屬超炫彈跳購物車</title>
+  <!-- Google Fonts: Traditional Chinese & Chunky Retro Header Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Chango&family=Noto+Sans+TC:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <!-- FontAwesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            cyber: ['Orbitron', 'sans-serif'],
-            sans: ['Plus Jakarta Sans', 'Noto Sans TC', 'sans-serif'],
+            tc: ['"Noto Sans TC"', 'sans-serif'],
+            fun: ['"Chango"', 'cursive'],
           },
           colors: {
-            neonCyan: '#00f3ff',
-            neonPink: '#ff007f',
-            neonPurple: '#a855f7',
-            cyberDark: '#080c16',
+            nightDark: '#120a06',
+            nightRed: '#e63946',
+            lanternGold: '#ffb703',
+            marketAmber: '#fb8500',
+            woodDark: '#23120a',
           }
         }
       }
@@ -29,320 +33,439 @@
   </script>
 
   <style>
-    :root {
-      --cyan: #00f3ff;
-      --pink: #ff007f;
-      --purple: #8b5cf6;
-      --dark-card: rgba(13, 19, 36, 0.7);
-    }
-
     body {
-      background: radial-gradient(circle at 10% 10%, #15112e 0%, #070a13 50%, #030509 100%);
-      color: #f1f5f9;
-      font-family: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif;
-      overflow-x: hidden;
+      background: radial-gradient(circle at 50% 12%, #32140a 0%, #170a04 55%, #0b0502 100%);
+      color: #fff6ed;
+      font-family: 'Noto Sans TC', sans-serif;
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    /* Background Ambient Glowing Orbs */
-    .ambient-orb {
+    /* Ambient Festive Red/Gold Lantern Lights */
+    .lantern-glow {
       position: fixed;
       border-radius: 50%;
-      filter: blur(130px);
       pointer-events: none;
+      filter: blur(120px);
       z-index: 0;
       opacity: 0.35;
-      animation: floatGlow 12s infinite alternate ease-in-out;
+      animation: lanternPulse 6s ease-in-out infinite alternate;
     }
-    .orb-1 { width: 500px; height: 500px; background: #6366f1; top: -100px; left: -100px; }
-    .orb-2 { width: 450px; height: 450px; background: #ff007f; bottom: 50px; right: -100px; animation-delay: -5s; }
-    .orb-3 { width: 400px; height: 400px; background: #00f3ff; top: 40%; left: 45%; opacity: 0.2; animation-delay: -8s; }
+    .glow-1 { top: -60px; left: 10%; width: 450px; height: 450px; background: #e63946; }
+    .glow-2 { top: 28%; right: 5%; width: 500px; height: 500px; background: #ffb703; animation-delay: -3s; }
+    .glow-3 { bottom: 10%; left: 30%; width: 420px; height: 420px; background: #fb8500; opacity: 0.22; }
 
-    @keyframes floatGlow {
-      0% { transform: translateY(0px) scale(1); }
-      100% { transform: translateY(60px) scale(1.15); }
+    @keyframes lanternPulse {
+      0% { transform: scale(1) translateY(0); opacity: 0.28; }
+      100% { transform: scale(1.18) translateY(22px); opacity: 0.42; }
     }
 
-    /* Glassmorphism Card Style */
-    .glass-card {
-      background: var(--dark-card);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Stall Wooden Border Card with Neon Touch */
+    .stall-card {
+      background: linear-gradient(170deg, rgba(46, 27, 18, 0.94) 0%, rgba(24, 13, 7, 0.96) 100%);
+      border: 2px solid rgba(255, 183, 3, 0.28);
+      border-radius: 20px;
+      backdrop-filter: blur(8px);
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.85);
     }
-    .glass-card:hover {
+    .stall-card:hover {
       transform: translateY(-8px);
-      border-color: rgba(0, 243, 255, 0.45);
-      box-shadow: 0 16px 36px -10px rgba(0, 243, 255, 0.2), 0 0 25px rgba(255, 0, 127, 0.15);
+      border-color: #ffb703;
+      box-shadow: 0 20px 35px -5px rgba(255, 183, 3, 0.3), 0 0 20px rgba(230, 57, 70, 0.35);
     }
 
-    /* Cyber Button with Shimmer & Ripple */
-    .btn-cyber {
+    /* Button with wood grain & neon gradient glow */
+    .btn-market {
+      background: linear-gradient(135deg, #e63946 0%, #d62828 40%, #ff8500 100%);
+      box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.3);
       position: relative;
-      background: linear-gradient(135deg, #00f3ff 0%, #7928ca 50%, #ff007f 100%);
-      background-size: 200% auto;
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 4px 18px rgba(0, 243, 255, 0.25);
       overflow: hidden;
+      transition: all 0.22s ease;
     }
-    .btn-cyber:hover {
-      background-position: right center;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(255, 0, 127, 0.45);
+    .btn-market:hover {
+      background: linear-gradient(135deg, #ff4d5a 0%, #e63946 40%, #ff9e00 100%);
+      transform: scale(1.03);
+      box-shadow: 0 6px 22px rgba(255, 183, 3, 0.55);
     }
-    .btn-cyber:active {
+    .btn-market:active {
       transform: scale(0.96);
     }
-    .btn-cyber::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -60%;
-      width: 35%;
-      height: 200%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
-      transform: rotate(30deg);
-      transition: 0.6s ease;
-    }
-    .btn-cyber:hover::after {
-      left: 130%;
-    }
 
-    /* Button Ripple on Click */
-    .ripple-circle {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.65);
-      transform: scale(0);
-      animation: rippleAnim 0.6s linear;
-      pointer-events: none;
-    }
-    @keyframes rippleAnim {
-      to { transform: scale(4); opacity: 0; }
-    }
-
-    /* Cart Jelly Bounce Animation */
-    .cart-bounce {
-      animation: jelly 0.65s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-    @keyframes jelly {
-      0% { transform: scale(1, 1); }
-      30% { transform: scale(1.35, 0.8); }
-      40% { transform: scale(0.85, 1.25); }
-      55% { transform: scale(1.15, 0.9); }
-      70% { transform: scale(0.95, 1.05); }
-      100% { transform: scale(1, 1); }
-    }
-
-    /* Flying Projectile Glow Object */
-    .flying-bullet {
+    /* Animated 3D Food Projectile */
+    .food-flying-obj {
       position: fixed;
       pointer-events: none;
-      z-index: 9998;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #ffffff 10%, #00f3ff 60%, #ff007f 100%);
-      box-shadow: 0 0 20px #00f3ff, 0 0 35px #ff007f;
+      z-index: 10000;
       transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      filter: drop-shadow(0 12px 24px rgba(255, 183, 3, 0.7));
     }
 
-    /* Overlay Canvas */
+    /* Dynamic Cart Jelly Wobble Animation */
+    .cart-jelly {
+      animation: jellyWobble 0.7s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    }
+    @keyframes jellyWobble {
+      0% { transform: scale(1) rotate(0deg); }
+      20% { transform: scale(1.4, 0.7) rotate(-10deg); }
+      40% { transform: scale(0.75, 1.35) rotate(8deg); }
+      60% { transform: scale(1.18, 0.85) rotate(-4deg); }
+      80% { transform: scale(0.95, 1.05) rotate(2deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
+
+    /* Cart Shockwave Ring */
+    .cart-shockwave {
+      position: fixed;
+      pointer-events: none;
+      border-radius: 50%;
+      border-width: 3px;
+      border-style: solid;
+      transform: translate(-50%, -50%);
+      animation: ringOut 0.65s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+      z-index: 9999;
+    }
+    @keyframes ringOut {
+      0% { width: 10px; height: 10px; opacity: 1; }
+      100% { width: 140px; height: 140px; opacity: 0; }
+    }
+
+    /* Floating "+1" Special Indicator */
+    .flying-plus-text {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      font-weight: 900;
+      font-size: 26px;
+      color: #ffb703;
+      text-shadow: 0 0 14px rgba(255, 42, 95, 0.9), 0 2px 5px #000;
+      animation: floatUp 0.85s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+    }
+    @keyframes floatUp {
+      0% { opacity: 0; transform: translate(-50%, 0) scale(0.4); }
+      25% { opacity: 1; transform: translate(-50%, -24px) scale(1.3); }
+      100% { opacity: 0; transform: translate(-50%, -68px) scale(1); }
+    }
+
+    /* Fullscreen Physics Particle Canvas */
     #fx-canvas {
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: 9999;
+      z-index: 9998;
     }
 
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: rgba(8, 12, 22, 0.8); }
-    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 99px; }
-    ::-webkit-scrollbar-thumb:hover { background: #00f3ff; }
+    /* Traditional Striped Night Market Canopy Top Banner */
+    .market-banner {
+      background: repeating-linear-gradient(
+        -45deg,
+        #e63946,
+        #e63946 16px,
+        #ffb703 16px,
+        #ffb703 32px
+      );
+    }
   </style>
 </head>
-<body class="relative">
+<body class="relative selection:bg-marketAmber selection:text-black">
 
-  <!-- Ambient Color Layers -->
-  <div class="ambient-orb orb-1"></div>
-  <div class="ambient-orb orb-2"></div>
-  <div class="ambient-orb orb-3"></div>
+  <!-- Ambient Light Orbs -->
+  <div class="lantern-glow glow-1"></div>
+  <div class="lantern-glow glow-2"></div>
+  <div class="lantern-glow glow-3"></div>
 
-  <!-- Fullscreen Particle Effects Canvas -->
+  <!-- Particle Simulation Canvas -->
   <canvas id="fx-canvas"></canvas>
 
-  <header class="sticky top-0 z-50 backdrop-blur-xl bg-[#080c16]/80 border-b border-white/10 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-      <!-- Brand Logo -->
+  <!-- Top Striped Canopy Strip -->
+  <div class="market-banner h-3 w-full sticky top-0 z-[60]"></div>
+
+  <!-- Sticky Header Navigation -->
+  <header class="sticky top-3 z-50 backdrop-blur-md bg-woodDark/90 border-b border-lanternGold/30 px-4 sm:px-8 py-3.5 transition-all">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <!-- Brand & Title -->
       <a href="#" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-400 via-indigo-500 to-pink-500 flex items-center justify-center shadow-[0_0_20px_rgba(0,243,255,0.5)] group-hover:rotate-12 transition-transform duration-300">
-          <i class="fa-solid fa-microchip text-white text-lg"></i>
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-nightRed via-marketAmber to-lanternGold flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(255,183,3,0.6)] group-hover:rotate-12 transition-transform">
+          🏮
         </div>
         <div>
-          <span class="font-cyber font-black tracking-wider text-xl sm:text-2xl bg-gradient-to-r from-white via-cyan-200 to-pink-400 bg-clip-text text-transparent">CYBER・MART</span>
-          <span class="block text-[10px] tracking-widest text-cyan-400 uppercase font-semibold">Future Gear 2026</span>
+          <div class="flex items-center gap-2">
+            <h1 class="text-2xl sm:text-3xl font-black tracking-tight text-lanternGold drop-shadow-[0_2px_8px_rgba(230,57,70,0.8)]">
+              寶島逢甲觀光夜市
+            </h1>
+            <span class="bg-nightRed text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full animate-pulse border border-yellow-300">各色專屬特效</span>
+          </div>
+          <p class="text-xs text-amber-200/80 font-medium">每樣美食獨立彈跳音效・專屬食材粒子爆發</p>
         </div>
       </a>
 
-      <!-- Navigation & Action Controls -->
-      <div class="flex items-center gap-3 sm:gap-6">
-        <!-- Audio Synthesizer Toggle -->
-        <button id="sound-toggle-btn" class="p-2.5 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-cyan-400 transition-all text-sm flex items-center gap-2" title="切換音效">
-          <i class="fa-solid fa-volume-high" id="sound-icon"></i>
-          <span class="hidden sm:inline text-xs font-semibold">立體音效</span>
+      <!-- Controls -->
+      <div class="flex items-center gap-3 sm:gap-5">
+        <!-- Audio Synth Toggle -->
+        <button id="sound-btn" class="p-2.5 rounded-xl border border-lanternGold/30 bg-black/40 hover:bg-black/60 text-amber-300 hover:text-white transition flex items-center gap-2 text-sm" title="開關夜市音效">
+          <i class="fa-solid fa-volume-high text-marketAmber" id="sound-icon"></i>
+          <span class="hidden sm:inline text-xs font-bold">攤位擬真音效</span>
         </button>
 
-        <!-- Cart Button -->
-        <div class="relative">
-          <button id="cart-toggle-btn" class="relative flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 text-white font-semibold transition-all duration-300 group hover:border-cyan-400/50 shadow-lg">
-            <i class="fa-solid fa-cart-shopping text-cyan-400 group-hover:scale-110 transition-transform" id="nav-cart-icon"></i>
-            <span class="text-sm hidden sm:inline">購物車</span>
-            <span id="nav-cart-badge" class="min-w-[22px] h-[22px] px-1.5 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold text-xs flex items-center justify-center shadow-[0_0_12px_rgba(255,0,127,0.7)] transition-transform">0</span>
-          </button>
-        </div>
+        <!-- Shopping Cart Trigger Button -->
+        <button id="cart-btn" class="relative flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-gradient-to-r from-nightRed to-marketAmber border-2 border-yellow-300 text-white font-extrabold shadow-[0_0_20px_rgba(255,183,3,0.4)] hover:shadow-[0_0_25px_rgba(255,183,3,0.8)] transition-all">
+          <span class="text-xl" id="cart-icon-elem">🛒</span>
+          <span class="text-sm font-bold hidden sm:inline">夜市小吃提籃</span>
+          <span id="cart-count-badge" class="min-w-[24px] h-[24px] px-1 rounded-full bg-yellow-300 text-black font-black text-xs flex items-center justify-center shadow-md">
+            0
+          </span>
+        </button>
       </div>
     </div>
   </header>
 
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 pt-10 pb-24 relative z-10">
-    <!-- Hero Title -->
-    <div class="text-center max-w-3xl mx-auto mb-14">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cyan-400/30 bg-cyan-500/10 text-cyan-300 text-xs font-bold uppercase tracking-wider mb-4 shadow-[0_0_15px_rgba(0,243,255,0.2)]">
-        <i class="fa-solid fa-bolt-lightning text-yellow-400 animate-pulse"></i> 次世代賽博龐克潮品
+  <!-- Main Showcase Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-28 relative z-10">
+    <!-- Hero Night Market Signboard -->
+    <div class="text-center max-w-3xl mx-auto mb-10">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-950/80 border border-yellow-400 text-yellow-300 text-xs sm:text-sm font-bold tracking-wider mb-4 shadow-lg">
+        <span>✨ 8 大夜市美食：點擊加入各有專屬<b>食材粒子噴射</b>與<b>3D 彈跳空翻</b>！</span>
       </div>
-      <h1 class="text-3xl sm:text-5xl font-black font-cyber tracking-tight mb-4 text-white">
-        點擊觸發 <span class="bg-gradient-to-r from-cyan-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">全息炫光爆炸</span>
-      </h1>
-      <p class="text-slate-400 text-base sm:text-lg">
-        享受極致流暢的 Canvas 粒子禮花、拋物線光球飛射軌跡、音效合成與購物車果凍彈跳體驗。
+      <h2 class="text-3xl sm:text-5xl font-black text-white tracking-wide mb-3">
+        台灣夜市經典美食 <span class="text-transparent bg-clip-text bg-gradient-to-r from-lanternGold via-marketAmber to-nightRed drop-shadow">香味大集結</span>
+      </h2>
+      <p class="text-amber-200/80 text-sm sm:text-base">
+        珍奶啵啵珍珠、雞排黃金酥脆屑、臭豆腐辣椒圈蔥花、骰子牛高溫烈焰…點擊按鈕親自體驗！
       </p>
     </div>
 
-    <!-- Product Grid Container -->
-    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Dynamic Products Injected via JS -->
+    <!-- Product Stall Grid -->
+    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Injected via JavaScript -->
     </div>
   </main>
 
+  <!-- Footer -->
+  <footer class="border-t border-lanternGold/20 bg-black/60 py-8 text-center text-xs text-amber-200/60 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl">🏮</span>
+        <span class="font-bold text-amber-300">台灣寶島觀光夜市・特製專屬彈跳特效網頁 (js.html)</span>
+      </div>
+      <div>純原生 HTML + CSS + JS 實現・無外部資源依賴・即開即用</div>
+    </div>
+  </footer>
+
   <!-- Cart Drawer Overlay -->
-  <div id="cart-drawer-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-md z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <div id="drawer-backdrop" class="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
 
   <!-- Cart Drawer Sidebar -->
-  <aside id="cart-drawer" class="fixed top-0 right-0 w-full max-w-md h-full bg-[#0c1222]/95 border-l border-white/15 shadow-2xl z-50 translate-x-full transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col">
+  <aside id="drawer" class="fixed top-0 right-0 w-full max-w-md h-full bg-[#1c0f09] border-l-2 border-lanternGold/40 shadow-2xl z-50 translate-x-full transition-transform duration-300 ease-out flex flex-col">
     <!-- Drawer Header -->
-    <div class="p-6 border-b border-white/10 flex items-center justify-between">
+    <div class="p-5 border-b border-lanternGold/20 flex items-center justify-between bg-black/30">
       <div class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center">
-          <i class="fa-solid fa-bag-shopping"></i>
+        <span class="text-3xl">🧺</span>
+        <div>
+          <h3 class="font-extrabold text-lg text-yellow-300">外帶小吃提袋</h3>
+          <p class="text-xs text-amber-200/70">現點現做・熱騰騰為您打包留香</p>
         </div>
-        <h2 class="font-cyber font-bold text-lg text-white">我的購物裝備庫</h2>
       </div>
-      <button id="close-drawer-btn" class="w-9 h-9 rounded-xl border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-colors">
+      <button id="close-drawer-btn" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition">
         <i class="fa-solid fa-xmark text-lg"></i>
       </button>
     </div>
 
-    <!-- Drawer Item List -->
-    <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-4">
-      <!-- Cart Items generated by JS -->
+    <!-- Items List -->
+    <div id="cart-items-box" class="flex-1 overflow-y-auto p-5 space-y-3">
+      <!-- Items dynamically injected -->
     </div>
 
-    <!-- Drawer Footer -->
-    <div class="p-6 border-t border-white/10 bg-[#080d1a]/80 space-y-4">
-      <div class="flex items-center justify-between text-slate-400 text-sm">
-        <span>配送方式</span>
-        <span class="text-cyan-400 font-semibold">次世代極速星際快遞 (免運費)</span>
+    <!-- Coupon Input & Pricing Summary -->
+    <div class="p-5 border-t border-lanternGold/20 bg-black/40 space-y-4">
+      <!-- Coupon Section -->
+      <div class="flex gap-2">
+        <input type="text" id="coupon-input" placeholder="輸入優惠碼 (如: NIGHTMARKET88)" class="flex-1 bg-black/60 border border-lanternGold/40 rounded-xl px-3 py-2 text-sm text-yellow-300 uppercase placeholder:text-amber-200/40 focus:outline-none focus:border-lanternGold">
+        <button id="apply-coupon-btn" class="px-4 py-2 bg-lanternGold hover:bg-marketAmber text-black font-extrabold text-xs rounded-xl transition">套用</button>
       </div>
-      <div class="flex items-center justify-between text-base">
-        <span class="text-white font-bold">訂單總額</span>
-        <span id="cart-total-price" class="text-2xl font-black font-cyber text-cyan-400">$0</span>
+      <div id="coupon-feedback" class="text-xs text-emerald-400 font-bold hidden"></div>
+
+      <!-- Pricing Summary -->
+      <div class="space-y-1.5 text-sm text-amber-200/80">
+        <div class="flex justify-between">
+          <span>小吃合計</span>
+          <span id="price-subtotal" class="font-bold text-white">NT$ 0</span>
+        </div>
+        <div class="flex justify-between text-yellow-400" id="discount-row" style="display: none;">
+          <span>夜市老饕折扣</span>
+          <span id="price-discount">-NT$ 0</span>
+        </div>
+        <div class="flex justify-between text-base font-black text-white pt-2 border-t border-white/10">
+          <span>外帶結帳總金額</span>
+          <span id="price-grandtotal" class="text-2xl text-lanternGold font-black">NT$ 0</span>
+        </div>
       </div>
-      <button id="checkout-action-btn" class="btn-cyber w-full py-3.5 rounded-xl text-white font-bold text-base flex items-center justify-center gap-2">
-        <i class="fa-solid fa-lock text-sm"></i>
-        <span>立即確認結帳</span>
+
+      <!-- Checkout Button -->
+      <button id="checkout-btn" class="btn-market w-full py-3.5 rounded-2xl text-white font-extrabold text-base flex items-center justify-center gap-2 border border-yellow-300">
+        <span>👨‍🍳 立即出攤買單 (外帶回家)</span>
       </button>
     </div>
   </aside>
 
-  <!-- Glassmorphism Toast Floating Container -->
-  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
+  <!-- Checkout Celebration Modal -->
+  <div id="checkout-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-[100] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+    <div class="bg-gradient-to-b from-[#2e1208] to-[#120703] border-2 border-lanternGold rounded-3xl max-w-sm w-full p-6 text-center shadow-[0_0_50px_rgba(255,183,3,0.5)] transform scale-90 transition-all">
+      <div class="text-6xl mb-3 animate-bounce">🏮🎉🧋</div>
+      <h3 class="text-2xl font-black text-yellow-300 mb-2">夜市大廚火速備料中！</h3>
+      <p class="text-amber-200/80 text-sm mb-4 leading-relaxed">
+        八大夜市美食全數入鍋起鍋，香氣四溢！感謝您品味最道地的台灣好滋味！
+      </p>
+      <div class="p-3 bg-black/50 rounded-xl text-yellow-400 font-bold text-sm mb-5 border border-lanternGold/30" id="modal-summary">
+        實付金額：NT$ 0
+      </div>
+      <button id="modal-close-btn" class="btn-market w-full py-3 rounded-xl text-white font-extrabold text-sm border border-yellow-400">
+        繼續逛逛夜市
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Dock -->
+  <div id="toast-dock" class="fixed bottom-6 right-6 z-[80] flex flex-col gap-3 pointer-events-none"></div>
 
   <script>
-    // Product Catalog Mock Data
-    const products = [
+    // 8 Signature Taiwan Night Market Foods with Distinct Effects & Specs
+    const foodList = [
       {
-        id: 1,
-        title: "全息賽博護目鏡 Cyber Visor",
-        tag: "熱銷旗艦",
-        desc: "內建抬頭 HUD 顯示螢幕，支援神經網路 AR 視野校正與全景夜視傳感器。",
-        price: 5880,
-        icon: "fa-vr-cardboard",
-        gradient: "from-cyan-500 to-blue-600",
-        color: "#00f3ff",
-        rating: "4.9"
+        id: 'boba',
+        name: "經典波霸黑糖珍奶",
+        category: "鎮店之寶",
+        tag: "手工黑糖炒製",
+        desc: "現煮極致Q彈黑糖波霸，彈牙過癮，濃郁炒黑糖奶香！",
+        price: 65,
+        rating: "5.0",
+        badgeColor: "bg-amber-700",
+        emoji: "🧋",
+        colorTheme: "#ffb703",
+        flyingShape: "boba-cup",
+        fxDesc: "波霸黑糖珍珠四射",
+        toastTitle: "🧋 咕嚕～黑糖波霸空翻入籃！",
+        soundType: "boba"
       },
       {
-        id: 2,
-        title: "霓虹光子機械鍵盤 Neon Mech",
-        tag: "電競神物",
-        desc: "磁吸光軸自訂驅動，全金屬陽極氧化機身與流光 RGB 沉浸反應燈效。",
-        price: 4290,
-        icon: "fa-keyboard",
-        gradient: "from-pink-500 to-purple-600",
-        color: "#ff007f",
-        rating: "5.0"
+        id: 'chicken',
+        name: "豪大大巨無霸雞排",
+        category: "酥脆排隊",
+        tag: "比臉還大・外酥內嫩",
+        desc: "金黃酥脆薄皮，多汁爆漿，裹滿胡椒鹽與特級辣椒粉！",
+        price: 95,
+        rating: "4.9",
+        badgeColor: "bg-red-600",
+        emoji: "🍗",
+        colorTheme: "#fb8500",
+        flyingShape: "chicken-cutlet",
+        fxDesc: "炸雞脆皮碎片 & 胡椒鹽顆粒噴散",
+        toastTitle: "🍗 滋滋～酥脆大雞排翻滾入袋！",
+        soundType: "chicken"
       },
       {
-        id: 3,
-        title: "超載脈衝能量晶飲 Pulse Energy",
-        tag: "生化補給",
-        desc: "微膠囊牛磺酸融合微量發光離子，3秒瞬態恢復專注力與極限反應。",
-        price: 360,
-        icon: "fa-bolt-lightning",
-        gradient: "from-amber-400 to-rose-500",
-        color: "#f59e0b",
-        rating: "4.8"
+        id: 'tofu',
+        name: "深坑麻辣臭豆腐",
+        category: "經典聞香",
+        tag: "雙鍋回炸・附爽脆泡菜",
+        desc: "大火高溫炸至孔隙吸飽麻辣紅油，撒上新鮮辣椒圈與青蔥花！",
+        price: 75,
+        rating: "4.8",
+        badgeColor: "bg-rose-700",
+        emoji: "🍢",
+        colorTheme: "#ff2a5f",
+        flyingShape: "spicy-tofu",
+        fxDesc: "紅油火星、辣椒圈與蔥花四射",
+        toastTitle: "🍢 嘶哈～麻辣臭豆腐熱氣噴發！",
+        soundType: "tofu"
       },
       {
-        id: 4,
-        title: "量子共振真無線耳機 Quantum Pro",
-        tag: "次世代降噪",
-        desc: "微型石墨烯複合振膜，0.01ms 極致無損低延遲空間音效傳輸技術。",
-        price: 6490,
-        icon: "fa-headphones-simple",
-        gradient: "from-emerald-400 to-teal-600",
-        color: "#10b981",
-        rating: "4.9"
+        id: 'oyster',
+        name: "廟口現煎蚵仔煎",
+        category: "傳統手路",
+        tag: "東石現剖鮮蚵",
+        desc: "鮮蚵大顆肥美，煎盤焦香粉漿配清脆小白菜，淋滿甜辣海味醬！",
+        price: 85,
+        rating: "4.9",
+        badgeColor: "bg-orange-600",
+        emoji: "🍳",
+        colorTheme: "#ff595e",
+        flyingShape: "oyster-pan",
+        fxDesc: "甜辣醬水滴、小白菜與飽滿鮮蚵水花",
+        toastTitle: "🍳 滋滋～蚵仔煎滑嫩入袋！",
+        soundType: "oyster"
       },
       {
-        id: 5,
-        title: "光能抗荷武士夾克 Samurai Jacket",
-        tag: "潮派限量",
-        desc: "智能溫度恆定纖維，具備防割裂抗水層與立領光導纖維動態流水燈。",
-        price: 12800,
-        icon: "fa-shield-halved",
-        gradient: "from-violet-500 to-fuchsia-600",
-        color: "#a855f7",
-        rating: "4.9"
+        id: 'beef',
+        name: "炙燒火焰骰子牛",
+        category: "現點現噴",
+        tag: "安格斯黑牛・噴槍炙烤",
+        desc: "瓦斯噴槍千度高溫瞬間鎖汁，焦香四溢，撒上玫瑰鹽與黑胡椒！",
+        price: 120,
+        rating: "4.8",
+        badgeColor: "bg-red-800",
+        emoji: "🥩",
+        colorTheme: "#ff3300",
+        flyingShape: "beef-cubes",
+        fxDesc: "炙燒火星、黑胡椒粒與煙燻熱氣",
+        toastTitle: "🥩 呼呼～烈火骰子牛高空彈跳！",
+        soundType: "beef"
       },
       {
-        id: 6,
-        title: "反重力反應爐核心燈 Glow Core",
-        tag: "未來家居",
-        desc: "磁懸浮聚合物核心，支援手勢空間懸空切換 1600 萬種極光波形色相。",
-        price: 3450,
-        icon: "fa-circle-nodes",
-        gradient: "from-cyan-400 to-indigo-600",
-        color: "#38bdf8",
-        rating: "4.7"
+        id: 'sweetpotato',
+        name: "黃金QQ地瓜球",
+        category: "夜市必嗑",
+        tag: "狂壓蓬鬆・雙色空心",
+        desc: "反覆施力狂壓炸出蓬鬆薄脆外皮，內層極限Q彈，甜糯迷人！",
+        price: 50,
+        rating: "4.9",
+        badgeColor: "bg-yellow-500",
+        emoji: "🍠",
+        colorTheme: "#ffd166",
+        flyingShape: "sweet-potato-ball",
+        fxDesc: "雙色地瓜小光球狂彈 & 糖霜粒子",
+        toastTitle: "🍠 啵啵啵～超彈地瓜球三連跳！",
+        soundType: "sweetpotato"
+      },
+      {
+        id: 'sausage',
+        name: "炭烤大腸包小腸",
+        category: "碳烤經典",
+        tag: "手作糯米腸・黑豬肉香腸",
+        desc: "炭火慢烤香腸夾入軟糯米腸，鋪滿酸菜、小黃瓜與辛香大蒜片！",
+        price: 80,
+        rating: "4.9",
+        badgeColor: "bg-amber-600",
+        emoji: "🌭",
+        colorTheme: "#d00000",
+        flyingShape: "taiwan-sausage",
+        fxDesc: "辛香蒜片、酸菜絲與炭烤火星",
+        toastTitle: "🌭 炭香四溢～大腸包小腸旋轉入袋！",
+        soundType: "sausage"
+      },
+      {
+        id: 'candy',
+        name: "晶瑩草莓糖葫蘆",
+        category: "甜食收尾",
+        tag: "薄脆糖衣・酸甜多汁",
+        desc: "新鮮大湖草莓裹上晶瑩剔透琥珀糖衣，薄脆喀碰不黏牙！",
+        price: 60,
+        rating: "4.7",
+        badgeColor: "bg-pink-600",
+        emoji: "🍓",
+        colorTheme: "#ff4d6d",
+        flyingShape: "tanghulu-stick",
+        fxDesc: "碎冰糖晶體、草莓果粒與閃爍光粉",
+        toastTitle: "🍓 喀滋～晶瑩糖葫蘆閃耀空降！",
+        soundType: "candy"
       }
     ];
 
-    // Shopping Cart State
-    let cartItems = [];
-    let isSoundEnabled = true;
+    let cart = [];
+    let discountAmount = 0;
+    let isSoundOn = true;
 
     // Web Audio Synthesizer (No external MP3 files needed)
     let audioCtx = null;
@@ -356,70 +479,187 @@
       return audioCtx;
     }
 
-    // Play Synthesizer Sci-Fi Sound
-    function playSciFiChime(type = 'add') {
-      if (!isSoundEnabled) return;
+    // Play Specialized Synthesized Audio per Food Type
+    function playSpecialFoodAudio(type) {
+      if (!isSoundOn) return;
       try {
         const ctx = getAudioContext();
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-
         const now = ctx.currentTime;
-        if (type === 'add') {
-          // Futuristic Arpeggio Laser Chime
-          osc.type = 'triangle';
-          osc.frequency.setValueAtTime(587.33, now); // D5
-          osc.frequency.exponentialRampToValueAtTime(880, now + 0.08); // A5
-          osc.frequency.exponentialRampToValueAtTime(1174.66, now + 0.16); // D6
-          gain.gain.setValueAtTime(0.18, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
-          osc.start(now);
-          osc.stop(now + 0.36);
-        } else if (type === 'hit') {
-          // Soft bubble cart entry pop
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(440, now);
-          osc.frequency.exponentialRampToValueAtTime(880, now + 0.12);
-          gain.gain.setValueAtTime(0.2, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
-          osc.start(now);
-          osc.stop(now + 0.21);
-        } else if (type === 'checkout') {
-          // Fanfare Victory chords
-          const freqs = [523.25, 659.25, 783.99, 1046.50];
-          freqs.forEach((f, idx) => {
-            const o = ctx.createOscillator();
-            const g = ctx.createGain();
-            o.connect(g);
-            g.connect(ctx.destination);
-            o.type = 'triangle';
-            o.frequency.setValueAtTime(f, now + idx * 0.08);
-            g.gain.setValueAtTime(0.15, now + idx * 0.08);
-            g.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.08 + 0.4);
-            o.start(now + idx * 0.08);
-            o.stop(now + idx * 0.08 + 0.42);
-          });
+
+        switch (type) {
+          case 'boba': {
+            // Boba slurp & chewy cartoon spring
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(260, now);
+            osc.frequency.exponentialRampToValueAtTime(800, now + 0.16);
+            osc.frequency.exponentialRampToValueAtTime(320, now + 0.35);
+            gain.gain.setValueAtTime(0.3, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.36);
+            break;
+          }
+          case 'chicken': {
+            // Sizzling crisp noise burst
+            const bufferSize = ctx.sampleRate * 0.25;
+            const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+              data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufferSize * 0.4));
+            }
+            const noise = ctx.createBufferSource();
+            noise.buffer = buffer;
+            const filter = ctx.createBiquadFilter();
+            filter.type = 'highpass';
+            filter.frequency.value = 1800;
+            const gain = ctx.createGain();
+            gain.gain.setValueAtTime(0.28, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
+            noise.connect(filter);
+            filter.connect(gain);
+            gain.connect(ctx.destination);
+            noise.start(now);
+            break;
+          }
+          case 'tofu': {
+            // Spicy sizzling whoosh
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(140, now);
+            osc.frequency.exponentialRampToValueAtTime(540, now + 0.12);
+            gain.gain.setValueAtTime(0.2, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.28);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.3);
+            break;
+          }
+          case 'oyster': {
+            // Sizzling pan fry slap
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(350, now);
+            osc.frequency.exponentialRampToValueAtTime(120, now + 0.2);
+            gain.gain.setValueAtTime(0.35, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.26);
+            break;
+          }
+          case 'beef': {
+            // Deep torch roar
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(90, now);
+            osc.frequency.exponentialRampToValueAtTime(260, now + 0.15);
+            osc.frequency.exponentialRampToValueAtTime(60, now + 0.35);
+            gain.gain.setValueAtTime(0.32, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.36);
+            break;
+          }
+          case 'sweetpotato': {
+            // High spring boing!
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(450, now);
+            osc.frequency.exponentialRampToValueAtTime(1100, now + 0.12);
+            osc.frequency.exponentialRampToValueAtTime(700, now + 0.26);
+            gain.gain.setValueAtTime(0.3, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.28);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.3);
+            break;
+          }
+          case 'sausage': {
+            // Charcoal crackle & chime
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'square';
+            osc.frequency.setValueAtTime(280, now);
+            osc.frequency.exponentialRampToValueAtTime(420, now + 0.1);
+            gain.gain.setValueAtTime(0.18, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.26);
+            break;
+          }
+          case 'candy': {
+            // Shimmering sugar chime
+            [1200, 1600, 2100].forEach((freq, idx) => {
+              const osc = ctx.createOscillator();
+              const gain = ctx.createGain();
+              osc.type = 'sine';
+              osc.frequency.setValueAtTime(freq, now + idx * 0.05);
+              gain.gain.setValueAtTime(0.2, now + idx * 0.05);
+              gain.gain.exponentialRampToValueAtTime(0.01, now + idx * 0.05 + 0.2);
+              osc.connect(gain);
+              gain.connect(ctx.destination);
+              osc.start(now + idx * 0.05);
+              osc.stop(now + idx * 0.05 + 0.22);
+            });
+            break;
+          }
         }
       } catch (e) {
-        console.warn('Audio playback inhibited', e);
+        console.warn('Audio synthesis notice:', e);
       }
     }
 
-    // Toggle Sound Button
-    const soundBtn = document.getElementById('sound-toggle-btn');
+    // Play Cart Receipt Chime
+    function playArrivalChime(colorTheme) {
+      if (!isSoundOn) return;
+      try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(587.33, now); // D5
+        osc.frequency.exponentialRampToValueAtTime(880.00, now + 0.08); // A5
+        gain.gain.setValueAtTime(0.22, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.23);
+      } catch (err) {}
+    }
+
+    // Sound toggle
+    const soundBtn = document.getElementById('sound-btn');
     const soundIcon = document.getElementById('sound-icon');
     soundBtn.addEventListener('click', () => {
-      isSoundEnabled = !isSoundEnabled;
-      if (isSoundEnabled) {
-        soundIcon.className = "fa-solid fa-volume-high text-cyan-400";
-        playSciFiChime('add');
+      isSoundOn = !isSoundOn;
+      if (isSoundOn) {
+        soundIcon.className = "fa-solid fa-volume-high text-marketAmber";
+        playSpecialFoodAudio('sweetpotato');
       } else {
-        soundIcon.className = "fa-solid fa-volume-xmark text-slate-500";
+        soundIcon.className = "fa-solid fa-volume-xmark text-stone-500";
       }
     });
 
+    // ==========================================
+    // Specialized Canvas Particle Engine
+    // ==========================================
     const canvas = document.getElementById('fx-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -431,142 +671,395 @@
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    class SparkleParticle {
-      constructor(x, y, themeColor) {
+    class FoodSpecificParticle {
+      constructor(x, y, foodId) {
         this.x = x;
         this.y = y;
-        this.color = themeColor || ['#00f3ff', '#ff007f', '#a855f7', '#ffffff', '#fbbf24'][Math.floor(Math.random() * 5)];
+        this.foodId = foodId;
+
         const angle = Math.random() * Math.PI * 2;
-        const velocity = Math.random() * 8 + 3;
-        this.vx = Math.cos(angle) * velocity;
-        this.vy = Math.sin(angle) * velocity;
-        this.size = Math.random() * 4.5 + 2;
+        const speed = Math.random() * 9 + 3;
+        this.vx = Math.cos(angle) * speed;
+        this.vy = Math.sin(angle) * speed - (Math.random() * 4 + 2); // initial upward pop
+        this.gravity = 0.32;
+        this.rotation = Math.random() * Math.PI * 2;
+        this.rotSpeed = (Math.random() - 0.5) * 0.25;
         this.life = 1.0;
-        this.decay = Math.random() * 0.025 + 0.015;
-        this.gravity = 0.15;
+        this.decay = Math.random() * 0.02 + 0.015;
+        this.size = Math.random() * 6 + 4;
+
+        // Determine particle shape and styling per food
+        switch (foodId) {
+          case 'boba':
+            this.kind = 'boba-pearl';
+            this.color = '#1f130c';
+            this.size = Math.random() * 4 + 4.5;
+            break;
+          case 'chicken':
+            this.kind = Math.random() > 0.4 ? 'crisp-flake' : 'pepper-grain';
+            this.color = this.kind === 'crisp-flake' ? '#e29528' : '#222';
+            break;
+          case 'tofu':
+            this.kind = Math.random() > 0.5 ? 'chili-ring' : (Math.random() > 0.5 ? 'scallion' : 'red-spark');
+            this.color = this.kind === 'chili-ring' ? '#e63946' : (this.kind === 'scallion' ? '#38b000' : '#ff7b00');
+            break;
+          case 'oyster':
+            this.kind = Math.random() > 0.5 ? 'sauce-drop' : (Math.random() > 0.5 ? 'oyster-piece' : 'green-veg');
+            this.color = this.kind === 'sauce-drop' ? '#d90429' : (this.kind === 'green-veg' ? '#52b788' : '#e0e1dd');
+            break;
+          case 'beef':
+            this.kind = Math.random() > 0.4 ? 'torch-spark' : 'black-pepper';
+            this.color = this.kind === 'torch-spark' ? '#ff3e00' : '#111';
+            break;
+          case 'sweetpotato':
+            this.kind = 'sweet-ball';
+            this.color = Math.random() > 0.5 ? '#f4a261' : '#7209b7'; // yellow or purple sweet potato
+            this.size = Math.random() * 4 + 4;
+            break;
+          case 'sausage':
+            this.kind = Math.random() > 0.5 ? 'garlic-slice' : (Math.random() > 0.5 ? 'sauerkraut' : 'charcoal-spark');
+            this.color = this.kind === 'garlic-slice' ? '#fdf0d5' : (this.kind === 'sauerkraut' ? '#a7c957' : '#ff5400');
+            break;
+          case 'candy':
+            this.kind = Math.random() > 0.4 ? 'sugar-crystal' : 'strawberry-crumb';
+            this.color = this.kind === 'sugar-crystal' ? '#ffffff' : '#ff2052';
+            this.size = Math.random() * 3 + 2.5;
+            break;
+          default:
+            this.kind = 'spark';
+            this.color = '#ffb703';
+        }
       }
 
       update() {
         this.x += this.vx;
         this.y += this.vy;
         this.vy += this.gravity;
+        this.rotation += this.rotSpeed;
         this.life -= this.decay;
-        this.size = Math.max(0, this.size - 0.04);
       }
 
-      draw(context) {
-        context.save();
-        context.globalAlpha = Math.max(0, this.life);
-        context.fillStyle = this.color;
-        context.shadowColor = this.color;
-        context.shadowBlur = 16;
-        context.beginPath();
-        context.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        context.fill();
-        context.restore();
+      draw(c) {
+        c.save();
+        c.globalAlpha = Math.max(0, this.life);
+        c.translate(this.x, this.y);
+        c.rotate(this.rotation);
+
+        switch (this.kind) {
+          case 'boba-pearl':
+            // High gloss tapioca pearl
+            c.fillStyle = this.color;
+            c.beginPath();
+            c.arc(0, 0, this.size, 0, Math.PI * 2);
+            c.fill();
+            // Highlight
+            c.fillStyle = 'rgba(255, 255, 255, 0.4)';
+            c.beginPath();
+            c.arc(-this.size * 0.3, -this.size * 0.3, this.size * 0.35, 0, Math.PI * 2);
+            c.fill();
+            break;
+
+          case 'crisp-flake':
+            // Fried golden crunchy flake
+            c.fillStyle = this.color;
+            c.beginPath();
+            c.ellipse(0, 0, this.size * 1.3, this.size * 0.7, 0, 0, Math.PI * 2);
+            c.fill();
+            c.strokeStyle = '#c67812';
+            c.lineWidth = 1;
+            c.stroke();
+            break;
+
+          case 'chili-ring':
+            // Red chili ring
+            c.lineWidth = 2.5;
+            c.strokeStyle = this.color;
+            c.beginPath();
+            c.arc(0, 0, this.size, 0, Math.PI * 2);
+            c.stroke();
+            break;
+
+          case 'scallion':
+            // Chopped green scallion
+            c.fillStyle = this.color;
+            c.fillRect(-this.size, -this.size * 0.5, this.size * 2, this.size);
+            break;
+
+          case 'sauce-drop':
+            // Sweet & spicy drop
+            c.fillStyle = this.color;
+            c.beginPath();
+            c.arc(0, 0, this.size * 0.9, 0, Math.PI * 2);
+            c.fill();
+            break;
+
+          case 'torch-spark':
+            // Blazing flame particle
+            c.fillStyle = this.color;
+            c.shadowColor = '#ffb703';
+            c.shadowBlur = 10;
+            c.beginPath();
+            c.arc(0, 0, this.size * 0.8, 0, Math.PI * 2);
+            c.fill();
+            break;
+
+          case 'sweet-ball':
+            // Bouncy miniature sweet potato ball
+            c.fillStyle = this.color;
+            c.beginPath();
+            c.arc(0, 0, this.size, 0, Math.PI * 2);
+            c.fill();
+            c.fillStyle = 'rgba(255,255,255,0.4)';
+            c.beginPath();
+            c.arc(-this.size * 0.25, -this.size * 0.25, this.size * 0.3, 0, Math.PI * 2);
+            c.fill();
+            break;
+
+          case 'garlic-slice':
+            // Oval garlic slice
+            c.fillStyle = this.color;
+            c.beginPath();
+            c.ellipse(0, 0, this.size * 1.4, this.size * 0.8, 0, 0, Math.PI * 2);
+            c.fill();
+            break;
+
+          case 'sugar-crystal':
+            // Shimmering rock sugar diamond
+            c.fillStyle = this.color;
+            c.shadowColor = '#ffffff';
+            c.shadowBlur = 8;
+            c.beginPath();
+            c.moveTo(0, -this.size * 1.4);
+            c.lineTo(this.size, 0);
+            c.lineTo(0, this.size * 1.4);
+            c.lineTo(-this.size, 0);
+            c.closePath();
+            c.fill();
+            break;
+
+          default:
+            c.fillStyle = this.color;
+            c.beginPath();
+            c.arc(0, 0, this.size * 0.6, 0, Math.PI * 2);
+            c.fill();
+        }
+
+        c.restore();
       }
     }
 
-    function createExplosion(x, y, themeColor, count = 40) {
+    function burstFoodParticles(x, y, foodId, count = 28) {
       for (let i = 0; i < count; i++) {
-        particles.push(new SparkleParticle(x, y, themeColor));
+        particles.push(new FoodSpecificParticle(x, y, foodId));
       }
     }
 
-    function runFxLoop() {
+    function particleLoop() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i];
         p.update();
         p.draw(ctx);
-        if (p.life <= 0 || p.size <= 0) {
+        if (p.life <= 0 || p.y > canvas.height + 50) {
           particles.splice(i, 1);
         }
       }
-      requestAnimationFrame(runFxLoop);
+      requestAnimationFrame(particleLoop);
     }
-    runFxLoop();
+    particleLoop();
 
-    function launchCurvedOrb(startX, startY, targetElem, themeColor, onComplete) {
+    // ==========================================
+    // Specialized 3D Flying Model Generation
+    // ==========================================
+    function getFlyingFoodHTML(food) {
+      switch (food.flyingShape) {
+        case 'boba-cup':
+          return `
+            <div class="relative w-20 h-24">
+              <svg viewBox="0 0 100 125" class="w-full h-full drop-shadow-[0_10px_20px_rgba(255,183,3,0.7)]">
+                <line x1="50" y1="5" x2="65" y2="45" stroke="#ff2a5f" stroke-width="9" stroke-linecap="round" />
+                <ellipse cx="50" cy="38" rx="36" ry="10" fill="#e63946" stroke="#ffb703" stroke-width="2" />
+                <path d="M 20 40 L 29 105 A 12 12 0 0 0 41 116 L 59 116 A 12 12 0 0 0 71 105 L 80 40 Z" fill="#edd0b0" stroke="#ffb703" stroke-width="3" />
+                <circle cx="38" cy="100" r="5" fill="#1b0e06" />
+                <circle cx="50" cy="102" r="5.5" fill="#1b0e06" />
+                <circle cx="62" cy="99" r="5" fill="#1b0e06" />
+                <circle cx="44" cy="91" r="5" fill="#1b0e06" />
+                <circle cx="43" cy="62" r="2.5" fill="#2d1808" />
+                <circle cx="57" cy="62" r="2.5" fill="#2d1808" />
+                <path d="M 47 66 Q 50 70 53 66" stroke="#2d1808" stroke-width="2" fill="none" stroke-linecap="round" />
+              </svg>
+            </div>
+          `;
+        case 'chicken-cutlet':
+          return `
+            <div class="w-24 h-20 bg-gradient-to-r from-amber-500 via-yellow-600 to-amber-700 rounded-3xl border-2 border-yellow-300 shadow-[0_0_25px_rgba(251,133,0,0.8)] flex items-center justify-center text-4xl rotate-12">
+              🍗<span class="text-xs font-black text-white bg-red-600 px-1.5 py-0.5 rounded ml-1">酥脆</span>
+            </div>
+          `;
+        case 'spicy-tofu':
+          return `
+            <div class="w-20 h-20 bg-gradient-to-b from-stone-800 to-amber-950 border-2 border-red-500 rounded-2xl flex flex-col items-center justify-center shadow-[0_0_25px_rgba(230,57,70,0.8)] text-3xl">
+              🍢<span class="text-[10px] font-black text-yellow-300 animate-pulse">麻辣超香</span>
+            </div>
+          `;
+        case 'oyster-pan':
+          return `
+            <div class="w-20 h-20 bg-stone-900 border-2 border-orange-400 rounded-full flex flex-col items-center justify-center shadow-[0_0_25px_rgba(255,89,94,0.8)] text-3xl">
+              🍳<span class="text-[10px] font-bold text-amber-200">廟口直送</span>
+            </div>
+          `;
+        case 'beef-cubes':
+          return `
+            <div class="w-20 h-20 bg-gradient-to-br from-red-950 via-red-900 to-stone-950 border-2 border-amber-400 rounded-xl flex flex-col items-center justify-center shadow-[0_0_30px_rgba(255,51,0,0.9)] text-3xl animate-pulse">
+              🥩<span class="text-[10px] font-black text-yellow-400">炙燒烈火</span>
+            </div>
+          `;
+        case 'sweet-potato-ball':
+          return `
+            <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-amber-400 via-yellow-300 to-purple-600 border-2 border-yellow-200 flex items-center justify-center shadow-[0_0_28px_rgba(255,209,102,0.9)] text-4xl scale-110">
+              🍠
+            </div>
+          `;
+        case 'taiwan-sausage':
+          return `
+            <div class="w-24 h-16 bg-gradient-to-r from-red-700 via-rose-600 to-amber-900 rounded-full border-2 border-yellow-400 flex items-center justify-center shadow-[0_0_25px_rgba(208,0,0,0.8)] text-3xl gap-1">
+              🌭<span class="text-xs font-black text-yellow-300">蒜</span>
+            </div>
+          `;
+        case 'tanghulu-stick':
+          return `
+            <div class="w-16 h-24 flex flex-col items-center justify-center drop-shadow-[0_0_25px_rgba(255,77,109,0.9)] text-4xl">
+              🍓<span class="text-xl -mt-2">🍓</span><span class="text-base -mt-2 text-amber-300">🥢</span>
+            </div>
+          `;
+        default:
+          return `<div class="text-5xl">${food.emoji}</div>`;
+      }
+    }
+
+    // ==========================================
+    // Food Specific Jumping + Flight Physics
+    // ==========================================
+    function triggerFoodFlyingAnimation(startX, startY, targetElem, food, onComplete) {
       const targetRect = targetElem.getBoundingClientRect();
       const endX = targetRect.left + targetRect.width / 2;
       const endY = targetRect.top + targetRect.height / 2;
 
-      // Calculate Quadratic Bezier Control Point (curves upwards)
-      const ctrlX = (startX + endX) / 2 + (Math.random() * 80 - 40);
-      const ctrlY = Math.min(startX, endY) - (120 + Math.random() * 100);
+      // Spawn custom flight object
+      const flyingObj = document.createElement('div');
+      flyingObj.className = 'food-flying-obj';
+      flyingObj.innerHTML = getFlyingFoodHTML(food);
+      document.body.appendChild(flyingObj);
 
-      const orb = document.createElement('div');
-      orb.className = 'flying-bullet';
-      orb.style.boxShadow = `0 0 20px ${themeColor}, 0 0 40px #ffffff`;
-      document.body.appendChild(orb);
+      // Play tailored audio synth
+      playSpecialFoodAudio(food.soundType);
 
-      const duration = 650; // milliseconds
+      // Burst immediate food specific particles at button origin
+      burstFoodParticles(startX, startY, food.id, 26);
+
+      // Parabolic flight trajectory
+      const duration = 750; // ms
       const startTime = performance.now();
+      const ctrlX = (startX + endX) / 2 + (Math.random() * 80 - 40);
+      const ctrlY = Math.min(startY, endY) - (190 + Math.random() * 70); // High leaping arc
 
-      function animateOrb(time) {
-        const elapsed = time - startTime;
+      function animateStep(now) {
+        const elapsed = now - startTime;
         const t = Math.min(1, elapsed / duration);
 
-        // Quadratic Bezier Formula: B(t) = (1-t)^2 * P0 + 2(1-t)t * P1 + t^2 * P2
+        // Quadratic Bezier interpolation
         const currentX = Math.pow(1 - t, 2) * startX + 2 * (1 - t) * t * ctrlX + Math.pow(t, 2) * endX;
         const currentY = Math.pow(1 - t, 2) * startY + 2 * (1 - t) * t * ctrlY + Math.pow(t, 2) * endY;
 
-        orb.style.left = `${currentX}px`;
-        orb.style.top = `${currentY}px`;
+        // Cartoon Squash, Stretch & 720-degree acrobatic spin
+        const rotation = t * 720;
+        const scale = 1 + Math.sin(t * Math.PI) * 0.45;
 
-        // Emit slight spark trail along the projectile trajectory
-        if (Math.random() > 0.3) {
-          particles.push(new SparkleParticle(currentX, currentY, themeColor));
+        flyingObj.style.left = `${currentX}px`;
+        flyingObj.style.top = `${currentY}px`;
+        flyingObj.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale})`;
+
+        // Drop specialized trail particles along path
+        if (Math.random() > 0.4) {
+          particles.push(new FoodSpecificParticle(currentX, currentY, food.id));
         }
 
         if (t < 1) {
-          requestAnimationFrame(animateOrb);
+          requestAnimationFrame(animateStep);
         } else {
-          orb.remove();
+          // Food successfully landed inside Cart!
+          flyingObj.remove();
+
+          // Explosion of food particles at the cart
+          burstFoodParticles(endX, endY, food.id, 30);
+
+          // Impact shockwave ring
+          triggerCartImpactEffects(endX, endY, food.colorTheme);
+
+          // Arrival chime
+          playArrivalChime(food.colorTheme);
+
           if (onComplete) onComplete();
         }
       }
 
-      requestAnimationFrame(animateOrb);
+      requestAnimationFrame(animateStep);
     }
 
-    function triggerCartBadgePop() {
-      const cartIcon = document.getElementById('nav-cart-icon');
-      const badge = document.getElementById('nav-cart-badge');
-      const cartBtn = document.getElementById('cart-toggle-btn');
+    // Cart Impact Animation & Neon Ring
+    function triggerCartImpactEffects(x, y, colorTheme) {
+      const ring = document.createElement('div');
+      ring.className = 'cart-shockwave';
+      ring.style.left = `${x}px`;
+      ring.style.top = `${y}px`;
+      ring.style.borderColor = colorTheme;
+      ring.style.boxShadow = `0 0 20px ${colorTheme}`;
+      document.body.appendChild(ring);
+      setTimeout(() => ring.remove(), 700);
 
-      cartBtn.classList.remove('cart-bounce');
-      void cartBtn.offsetWidth; // Trigger reflow
-      cartBtn.classList.add('cart-bounce');
+      // Cart wobble & badge scale
+      const cartBtn = document.getElementById('cart-btn');
+      const badge = document.getElementById('cart-count-badge');
+      cartBtn.classList.remove('cart-jelly');
+      void cartBtn.offsetWidth;
+      cartBtn.classList.add('cart-jelly');
 
-      badge.style.transform = 'scale(1.4)';
+      badge.style.transform = 'scale(1.55)';
       setTimeout(() => {
         badge.style.transform = 'scale(1)';
-      }, 250);
-
-      playSciFiChime('hit');
+      }, 240);
     }
 
-    function spawnToastMessage(product) {
-      const container = document.getElementById('toast-container');
+    // Spawn floating +1 indicator
+    function spawnPlusIndicator(x, y, food) {
+      const tag = document.createElement('div');
+      tag.className = 'flying-plus-text';
+      tag.textContent = `+1 ${food.emoji}`;
+      tag.style.left = `${x}px`;
+      tag.style.top = `${y}px`;
+      document.body.appendChild(tag);
+      setTimeout(() => tag.remove(), 900);
+    }
+
+    // Show Tasty Food Toast Notification
+    function showFoodToast(food) {
+      const dock = document.getElementById('toast-dock');
       const toast = document.createElement('div');
-      toast.className = 'pointer-events-auto flex items-center gap-3.5 p-4 rounded-2xl bg-[#0e1628]/95 border border-cyan-400/40 text-white shadow-[0_10px_35px_rgba(0,0,0,0.6),0_0_20px_rgba(0,243,255,0.25)] backdrop-blur-xl translate-x-32 opacity-0 transition-all duration-300 min-w-[280px] max-w-sm';
+      toast.className = 'pointer-events-auto flex items-center gap-3.5 p-4 rounded-2xl bg-[#201008]/95 border-2 border-lanternGold text-white shadow-[0_12px_35px_rgba(0,0,0,0.8),0_0_20px_rgba(255,183,3,0.3)] backdrop-blur-xl translate-x-32 opacity-0 transition-all duration-300 min-w-[300px] max-w-sm';
 
       toast.innerHTML = `
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr ${product.gradient} flex items-center justify-center shrink-0 shadow-[0_0_15px_${product.color}]">
-          <i class="fa-solid ${product.icon} text-white text-base"></i>
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-nightRed to-marketAmber flex items-center justify-center text-3xl shrink-0 shadow-md">
+          ${food.emoji}
         </div>
         <div class="flex-1">
-          <div class="text-[11px] font-bold text-cyan-400 tracking-wider uppercase">已納入戰備庫存！</div>
-          <div class="font-bold text-sm text-slate-100 truncate">${product.title}</div>
-          <div class="text-xs text-slate-400">$${product.price.toLocaleString()} NTD</div>
+          <div class="text-[11px] font-extrabold text-yellow-300 tracking-wider">${food.toastTitle}</div>
+          <div class="font-bold text-sm text-amber-100 truncate">${food.name}</div>
+          <div class="text-xs text-amber-200/70 font-semibold">${food.fxDesc}</div>
         </div>
-        <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+        <span class="text-xl">🏮</span>
       `;
 
-      container.appendChild(toast);
-
+      dock.appendChild(toast);
       requestAnimationFrame(() => {
         toast.classList.remove('translate-x-32', 'opacity-0');
       });
@@ -574,160 +1067,170 @@
       setTimeout(() => {
         toast.classList.add('translate-x-32', 'opacity-0');
         setTimeout(() => toast.remove(), 350);
-      }, 3200);
+      }, 3300);
     }
 
-    function renderProductCatalog() {
+    // ==========================================
+    // Render Products Grid & Interaction
+    // ==========================================
+    function renderProductGrid() {
       const grid = document.getElementById('product-grid');
-      grid.innerHTML = products.map(prod => `
-        <div class="glass-card rounded-2xl overflow-hidden flex flex-col group" data-product-id="${prod.id}">
-          <!-- Product Visual Preview Area -->
-          <div class="relative h-56 bg-gradient-to-b from-white/5 to-transparent flex items-center justify-center p-6 overflow-hidden">
-            <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-white/10 border border-white/10 text-cyan-300 backdrop-blur-md">
-              ${prod.tag}
+      grid.innerHTML = foodList.map(item => `
+        <div class="stall-card p-5 flex flex-col justify-between group relative overflow-hidden" data-id="${item.id}">
+          <!-- Stall Top Badges -->
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider text-white ${item.badgeColor} shadow-sm">
+              ${item.category}
             </span>
-            <span class="absolute top-4 right-4 flex items-center gap-1 text-xs font-semibold text-yellow-400 bg-black/40 px-2.5 py-1 rounded-full border border-yellow-400/20">
-              <i class="fa-solid fa-star text-[10px]"></i> ${prod.rating}
+            <span class="flex items-center gap-1 text-xs font-black text-yellow-300 bg-black/50 px-2.5 py-1 rounded-full border border-yellow-400/30">
+              <i class="fa-solid fa-star text-amber-400 text-[10px]"></i> ${item.rating}
             </span>
-            <!-- Glowing Icon Representation -->
-            <div class="w-24 h-24 rounded-2xl bg-gradient-to-tr ${prod.gradient} flex items-center justify-center shadow-[0_0_35px_${prod.color}66] group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
-              <i class="fa-solid ${prod.icon} text-4xl text-white"></i>
+          </div>
+
+          <!-- Food Big Character Icon Display -->
+          <div class="relative py-4 flex flex-col items-center justify-center">
+            <div class="w-24 h-24 rounded-3xl bg-black/45 border border-yellow-400/25 flex items-center justify-center text-6xl shadow-inner group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300">
+              ${item.emoji}
+            </div>
+            <span class="mt-2 text-[11px] font-extrabold text-amber-300/90 bg-amber-950/70 px-2.5 py-0.5 rounded-full border border-amber-500/20">
+              ${item.tag}
+            </span>
+          </div>
+
+          <!-- Description & Custom FX Tag -->
+          <div class="my-3">
+            <h3 class="font-extrabold text-lg text-white group-hover:text-yellow-300 transition-colors">
+              ${item.name}
+            </h3>
+            <p class="text-xs text-amber-200/70 mt-1 line-clamp-2 leading-relaxed">
+              ${item.desc}
+            </p>
+            <div class="mt-2 text-[10px] font-bold text-amber-400/90 flex items-center gap-1">
+              <i class="fa-solid fa-wand-magic-sparkles text-marketAmber"></i> 特效：${item.fxDesc}
             </div>
           </div>
 
-          <!-- Product Details -->
-          <div class="p-6 flex-1 flex flex-col justify-between">
-            <div>
-              <h3 class="font-bold text-lg text-white mb-2 group-hover:text-cyan-400 transition-colors">${prod.title}</h3>
-              <p class="text-slate-400 text-sm line-clamp-2 leading-relaxed mb-4">${prod.desc}</p>
+          <!-- Price & Add-To-Cart Action Button -->
+          <div class="pt-3 border-t border-lanternGold/20 mt-1">
+            <div class="flex items-baseline justify-between mb-3">
+              <span class="text-xs font-bold text-amber-300/60">夜市價</span>
+              <span class="text-2xl font-black text-lanternGold tracking-tight">NT$ ${item.price}</span>
             </div>
 
-            <div>
-              <div class="flex items-baseline justify-between mb-4">
-                <span class="text-xs uppercase font-bold text-slate-500 tracking-wider">限定價格</span>
-                <span class="font-cyber font-black text-2xl text-cyan-400">$${prod.price.toLocaleString()}</span>
-              </div>
-
-              <!-- Spectacular Interactive Add-To-Cart Button -->
-              <button class="btn-cyber w-full py-3.5 px-4 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2 group/btn" onclick="handleAddToCartClick(event, ${prod.id})">
-                <i class="fa-solid fa-plus text-xs group-hover/btn:rotate-90 transition-transform duration-300"></i>
-                <span>加入購物車</span>
-              </button>
-            </div>
+            <!-- Add Button triggering Specific Food Effects -->
+            <button class="btn-market w-full py-3 px-4 rounded-xl text-white font-extrabold text-sm flex items-center justify-center gap-2 border border-yellow-300/60" onclick="handleAddToCartClick(event, '${item.id}')">
+              <span>${item.emoji} 加入購物車</span>
+            </button>
           </div>
         </div>
       `).join('');
     }
 
-    window.handleAddToCartClick = function(event, productId) {
-      const btn = event.currentTarget;
-      const rect = btn.getBoundingClientRect();
-      const clickX = event.clientX;
-      const clickY = event.clientY;
+    // Global Add To Cart Handler
+    window.handleAddToCartClick = function(e, foodId) {
+      const clickX = e.clientX;
+      const clickY = e.clientY;
 
-      const product = products.find(p => p.id === productId);
-      if (!product) return;
+      const food = foodList.find(i => i.id === foodId);
+      if (!food) return;
 
-      // 1. Play Synthesizer Sound
-      playSciFiChime('add');
+      // 1. Spawn +1 indicator
+      spawnPlusIndicator(clickX, clickY, food);
 
-      // 2. Button Ripple Effect
-      const ripple = document.createElement('span');
-      ripple.className = 'ripple-circle';
-      const diameter = Math.max(rect.width, rect.height);
-      ripple.style.width = ripple.style.height = `${diameter}px`;
-      ripple.style.left = `${clickX - rect.left - diameter / 2}px`;
-      ripple.style.top = `${clickY - rect.top - diameter / 2}px`;
-      btn.appendChild(ripple);
-      setTimeout(() => ripple.remove(), 600);
+      // 2. Target shopping cart button icon
+      const cartIcon = document.getElementById('cart-icon-elem');
 
-      // 3. Canvas Sparkle Explosion at Cursor Point
-      createExplosion(clickX, clickY, product.color, 45);
-
-      // 4. Curved Projectile Bullet Flying toward Navigation Cart
-      const cartIcon = document.getElementById('nav-cart-icon');
-      launchCurvedOrb(clickX, clickY, cartIcon, product.color, () => {
-        // Upon arrival: trigger jelly bounce & audio pop
-        triggerCartBadgePop();
-        // Little particle impact around the cart icon
-        const iconRect = cartIcon.getBoundingClientRect();
-        createExplosion(iconRect.left + iconRect.width / 2, iconRect.top + iconRect.height / 2, product.color, 25);
+      // 3. Trigger food specialized flight & particle explosion
+      triggerFoodFlyingAnimation(clickX, clickY, cartIcon, food, () => {
+        // Callback after landing
       });
 
-      // 5. Update State
-      const existing = cartItems.find(item => item.id === productId);
+      // 4. Update cart memory & UI
+      const existing = cart.find(i => i.id === foodId);
       if (existing) {
         existing.quantity += 1;
       } else {
-        cartItems.push({ ...product, quantity: 1 });
+        cart.push({ ...food, quantity: 1 });
       }
-      updateCartDisplay();
+      updateCartUI();
 
-      // 6. Floating Glass Toast Alert
-      spawnToastMessage(product);
+      // 5. Toast notification
+      showFoodToast(food);
     };
 
-    const drawerOverlay = document.getElementById('cart-drawer-overlay');
-    const cartDrawer = document.getElementById('cart-drawer');
-    const openDrawerBtn = document.getElementById('cart-toggle-btn');
+    // ==========================================
+    // Cart Drawer Navigation & Management
+    // ==========================================
+    const drawerBackdrop = document.getElementById('drawer-backdrop');
+    const drawer = document.getElementById('drawer');
+    const openDrawerBtn = document.getElementById('cart-btn');
     const closeDrawerBtn = document.getElementById('close-drawer-btn');
-    const checkoutBtn = document.getElementById('checkout-action-btn');
 
-    function toggleCartDrawer(open) {
+    function toggleDrawer(open) {
       if (open) {
-        drawerOverlay.classList.remove('pointer-events-none');
-        drawerOverlay.classList.add('opacity-100');
-        cartDrawer.classList.remove('translate-x-full');
+        drawerBackdrop.classList.remove('pointer-events-none');
+        drawerBackdrop.classList.add('opacity-100');
+        drawer.classList.remove('translate-x-full');
       } else {
-        drawerOverlay.classList.add('pointer-events-none');
-        drawerOverlay.classList.remove('opacity-100');
-        cartDrawer.classList.add('translate-x-full');
+        drawerBackdrop.classList.add('pointer-events-none');
+        drawerBackdrop.classList.remove('opacity-100');
+        drawer.classList.add('translate-x-full');
       }
     }
 
-    openDrawerBtn.addEventListener('click', () => toggleCartDrawer(true));
-    closeDrawerBtn.addEventListener('click', () => toggleCartDrawer(false));
-    drawerOverlay.addEventListener('click', () => toggleCartDrawer(false));
+    openDrawerBtn.addEventListener('click', () => toggleDrawer(true));
+    closeDrawerBtn.addEventListener('click', () => toggleDrawer(false));
+    drawerBackdrop.addEventListener('click', () => toggleDrawer(false));
 
-    function updateCartDisplay() {
-      const badge = document.getElementById('nav-cart-badge');
-      const listContainer = document.getElementById('cart-items-container');
-      const totalDisplay = document.getElementById('cart-total-price');
+    function updateCartUI() {
+      const badge = document.getElementById('cart-count-badge');
+      const container = document.getElementById('cart-items-box');
+      const subtotalElem = document.getElementById('price-subtotal');
+      const grandTotalElem = document.getElementById('price-grandtotal');
+      const discountRow = document.getElementById('discount-row');
+      const discountElem = document.getElementById('price-discount');
 
-      const totalCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-      const grandTotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      const totalItems = cart.reduce((sum, i) => sum + i.quantity, 0);
+      const subtotal = cart.reduce((sum, i) => sum + i.price * i.quantity, 0);
+      const grandTotal = Math.max(0, subtotal - discountAmount);
 
-      badge.textContent = totalCount;
-      totalDisplay.textContent = `$${grandTotal.toLocaleString()}`;
+      badge.textContent = totalItems;
+      subtotalElem.textContent = `NT$ ${subtotal}`;
+      grandTotalElem.textContent = `NT$ ${grandTotal}`;
 
-      if (cartItems.length === 0) {
-        listContainer.innerHTML = `
-          <div class="h-64 flex flex-col items-center justify-center text-center text-slate-500">
-            <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center text-2xl mb-4 text-slate-600">
-              <i class="fa-solid fa-box-open"></i>
-            </div>
-            <p class="font-bold text-slate-300 mb-1">裝備庫目前空無一物</p>
-            <p class="text-xs">快前往選購次世代裝備並觸發炫彩特效！</p>
+      if (discountAmount > 0) {
+        discountRow.style.display = 'flex';
+        discountElem.textContent = `-NT$ ${discountAmount}`;
+      } else {
+        discountRow.style.display = 'none';
+      }
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="h-64 flex flex-col items-center justify-center text-center text-amber-200/50">
+            <span class="text-6xl mb-3">🧺</span>
+            <p class="font-bold text-amber-200 mb-1">小吃籃目前空空如也</p>
+            <p class="text-xs">快點擊各色小吃，享受專屬彈跳與爆發特效！</p>
           </div>
         `;
         return;
       }
 
-      listContainer.innerHTML = cartItems.map(item => `
-        <div class="flex items-center gap-3.5 p-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-cyan-400/30 transition-colors">
-          <div class="w-12 h-12 rounded-lg bg-gradient-to-tr ${item.gradient} flex items-center justify-center shrink-0 shadow-[0_0_10px_${item.color}55]">
-            <i class="fa-solid ${item.icon} text-white text-lg"></i>
+      container.innerHTML = cart.map(item => `
+        <div class="flex items-center gap-3 p-3.5 rounded-xl bg-black/40 border border-lanternGold/20 hover:border-lanternGold/50 transition">
+          <div class="w-12 h-12 rounded-xl bg-amber-950/80 flex items-center justify-center text-2xl shrink-0 border border-yellow-500/30">
+            ${item.emoji}
           </div>
           <div class="flex-1 min-w-0">
-            <h4 class="font-semibold text-white text-sm truncate">${item.title}</h4>
-            <div class="text-xs font-cyber text-cyan-400 font-bold">$${(item.price * item.quantity).toLocaleString()}</div>
+            <h4 class="font-bold text-white text-sm truncate">${item.name}</h4>
+            <div class="text-xs font-black text-lanternGold">NT$ ${(item.price * item.quantity)}</div>
           </div>
-          <div class="flex items-center gap-1.5 bg-black/40 rounded-lg p-1 border border-white/10">
-            <button class="w-6 h-6 flex items-center justify-center text-xs text-slate-300 hover:text-white rounded hover:bg-white/10" onclick="alterQuantity(${item.id}, -1)">
+          <div class="flex items-center gap-1.5 bg-black/70 rounded-lg p-1 border border-white/10">
+            <button class="w-6 h-6 flex items-center justify-center text-xs text-amber-300 hover:text-white rounded hover:bg-white/10" onclick="changeQuantity('${item.id}', -1)">
               <i class="fa-solid fa-minus"></i>
             </button>
-            <span class="w-6 text-center text-xs font-bold text-white">${item.quantity}</span>
-            <button class="w-6 h-6 flex items-center justify-center text-xs text-slate-300 hover:text-white rounded hover:bg-white/10" onclick="alterQuantity(${item.id}, 1)">
+            <span class="w-6 text-center text-xs font-black text-white">${item.quantity}</span>
+            <button class="w-6 h-6 flex items-center justify-center text-xs text-amber-300 hover:text-white rounded hover:bg-white/10" onclick="changeQuantity('${item.id}', 1)">
               <i class="fa-solid fa-plus"></i>
             </button>
           </div>
@@ -735,50 +1238,92 @@
       `).join('');
     }
 
-    window.alterQuantity = function(id, delta) {
-      const index = cartItems.findIndex(i => i.id === id);
-      if (index === -1) return;
+    window.changeQuantity = function(id, delta) {
+      const idx = cart.findIndex(i => i.id === id);
+      if (idx === -1) return;
 
-      cartItems[index].quantity += delta;
-      if (cartItems[index].quantity <= 0) {
-        cartItems.splice(index, 1);
+      cart[idx].quantity += delta;
+      if (cart[idx].quantity <= 0) {
+        cart.splice(idx, 1);
       }
-      updateCartDisplay();
+      updateCartUI();
     };
 
-    // Checkout Simulation with Grand Fireworks Display
+    // Coupon Feature
+    const couponInput = document.getElementById('coupon-input');
+    const applyCouponBtn = document.getElementById('apply-coupon-btn');
+    const couponFeedback = document.getElementById('coupon-feedback');
+
+    applyCouponBtn.addEventListener('click', () => {
+      const code = couponInput.value.trim().toUpperCase();
+      if (code === 'NIGHTMARKET88' || code === 'BOBA88') {
+        discountAmount = 88;
+        couponFeedback.textContent = "🎉 成功折抵夜市老饕券 NT$ 88！";
+        couponFeedback.classList.remove('hidden');
+        playSpecialFoodAudio('boba');
+      } else if (code === 'TAIWAN100') {
+        discountAmount = 100;
+        couponFeedback.textContent = "🎉 滿額狂折 NT$ 100！";
+        couponFeedback.classList.remove('hidden');
+        playSpecialFoodAudio('sweetpotato');
+      } else {
+        alert("請輸入有效的夜市優惠碼（例如：NIGHTMARKET88 或 TAIWAN100）");
+        return;
+      }
+      updateCartUI();
+    });
+
+    // Checkout Celebration Feature
+    const checkoutBtn = document.getElementById('checkout-btn');
+    const checkoutModal = document.getElementById('checkout-modal');
+    const modalCloseBtn = document.getElementById('modal-close-btn');
+    const modalSummary = document.getElementById('modal-summary');
+
     checkoutBtn.addEventListener('click', () => {
-      if (cartItems.length === 0) {
-        alert("購物車內尚無裝備，請先挑選商品！");
+      if (cart.length === 0) {
+        alert("小吃提袋還是空的，快挑選您心儀的夜市美食！");
         return;
       }
 
-      playSciFiChime('checkout');
+      const subtotal = cart.reduce((sum, i) => sum + i.price * i.quantity, 0);
+      const grandTotal = Math.max(0, subtotal - discountAmount);
 
-      // Trigger Grand Fireworks Confetti across the screen
-      for (let burst = 0; burst < 6; burst++) {
+      modalSummary.textContent = `實付總計：NT$ ${grandTotal}（已享優惠折抵）`;
+
+      // Full screen multi-food fireworks celebration
+      foodList.forEach((food, index) => {
         setTimeout(() => {
-          createExplosion(
-            Math.random() * window.innerWidth,
-            Math.random() * window.innerHeight * 0.7 + 100,
-            null,
-            50
+          burstFoodParticles(
+            Math.random() * window.innerWidth * 0.8 + window.innerWidth * 0.1,
+            Math.random() * window.innerHeight * 0.6 + 120,
+            food.id,
+            35
           );
-        }, burst * 160);
-      }
+          playSpecialFoodAudio(food.soundType);
+        }, index * 120);
+      });
 
-      // Close drawer & reset cart
-      setTimeout(() => {
-        toggleCartDrawer(false);
-        cartItems = [];
-        updateCartDisplay();
-      }, 900);
+      toggleDrawer(false);
+      checkoutModal.classList.remove('opacity-0', 'pointer-events-none');
+      checkoutModal.children[0].classList.remove('scale-90');
+      checkoutModal.children[0].classList.add('scale-100');
+    });
+
+    modalCloseBtn.addEventListener('click', () => {
+      checkoutModal.classList.add('opacity-0', 'pointer-events-none');
+      checkoutModal.children[0].classList.add('scale-90');
+      checkoutModal.children[0].classList.remove('scale-100');
+      cart = [];
+      discountAmount = 0;
+      couponInput.value = '';
+      couponFeedback.classList.add('hidden');
+      updateCartUI();
     });
 
     // Initialize Page
     window.addEventListener('DOMContentLoaded', () => {
-      renderProductCatalog();
-      updateCartDisplay();
+      renderProductGrid();
+      updateCartUI();
     });
   </script>
 </body>
